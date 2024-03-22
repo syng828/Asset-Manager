@@ -19,6 +19,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try { 
+			//Application begins here
 			HBox root = (HBox)FXMLLoader.load(getClass().getClassLoader().getResource("view/Main.fxml"));
 			Scene scene = new Scene(root, 600, 400); 
 			primaryStage.setScene(scene); 

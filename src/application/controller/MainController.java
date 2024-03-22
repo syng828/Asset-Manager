@@ -10,39 +10,41 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox; 
 
+//Controls Main.fxml for switching between pages
 public class MainController { 
 	
 	@FXML HBox mainBox; 
 	
+	// Load Home.fxml when the controller is initialized
+	 @FXML
+    public void initialize() {
+        loadFXML("view/Home.fxml");
+    }
+	 
+	//Replaces display with the Home.fxml page when button is clicked
 	@FXML public void goToHome() { 
-		URL url = getClass().getClassLoader().getResource("view/Home.fxml"); 
-		AnchorPane panel;
-		try {
-			panel = (AnchorPane) FXMLLoader.load(url);
-			if (mainBox.getChildren().size() > 1 )
-				mainBox.getChildren().remove(1); 
-			
-			mainBox.getChildren().add(panel);
-			
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} 
+		loadFXML("view/Home.fxml");
+	}
+
+	//Replaces display with the AddNewCategory.fxml page when button is clicked
+	@FXML public void goToAddCategory() { 
+		loadFXML("view/AddNewCategory.fxml"); 
 	}
 	
-	@FXML public void goToAddCategory() { 
-		URL url = getClass().getClassLoader().getResource("view/AddNewCategory.fxml"); 
+	//Loads the display on the right.
+	private void loadFXML(String fxmlPath) { 
+		URL url = getClass().getClassLoader().getResource(fxmlPath); 
 		AnchorPane panel;
 		try {
 			panel = (AnchorPane) FXMLLoader.load(url);
-			if (mainBox.getChildren().size() > 1 )
+			if (mainBox.getChildren().size() > 1 ) //Removes right AnchorPane beforehand to avoid overlapping views
 				mainBox.getChildren().remove(1); 
+			
 			mainBox.getChildren().add(panel);
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
-		
 	}
 }
