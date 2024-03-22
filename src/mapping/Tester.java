@@ -9,7 +9,6 @@ public class Tester {
 		TagHandler.addCategory("THREE");
 		TagHandler.addCategory("FOUR");
 		TagHandler.addCategory("FIVE");
-		TagHandler.removeCategory("TWO");
 		
 		List<String> list = TagHandler.returnCategories();
 		
