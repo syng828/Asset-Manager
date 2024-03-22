@@ -14,11 +14,6 @@ public class TagHandler {
 		categorySet.add(cat);
 	}
 	
-	public static void removeCategory(String category) {
-		Tag cat = new Category(category);
-		categorySet.remove(cat);
-	}
-	
 	public static List<String> returnCategories(){
 		ArrayList<String> categoryNames = new ArrayList<String>();
 		Iterator<Tag> iter = categorySet.iterator();
