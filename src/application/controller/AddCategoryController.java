@@ -24,7 +24,7 @@ public class AddCategoryController {
 			alert.setContentText("Please enter a category name"); 
 			alert.showAndWait();
 		}
-		//Adds category from text field to the list of categories in TagHandler. 
+		//Adds category from text field to categories in database. 
 		else {
 			TagHandler.addCategory(categoryTextField.getText());
 			List<String> categories = TagHandler.returnCategories(); //loops through results for testing purposes.
