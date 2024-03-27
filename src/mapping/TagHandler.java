@@ -1,26 +1,52 @@
 package mapping;
-import java.util.*;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class TagHandler {
 	
-	public static HashSet<Tag> categorySet = new HashSet<Tag>();
+	private SQLController sqlite;
 
 	public TagHandler() {
+		sqlite = new SQLController();
+		sqlite.connectDB();
 		
 	}
-	//Adds category in a HashSet so there are no duplicate values
-	public static void addCategory(String category) {
-		Category cat = new Category(category);
-		categorySet.add(cat);
-	}
 	
-	//Returns list of categories
-	public static List<String> returnCategories(){
-		ArrayList<String> categoryNames = new ArrayList<String>();
-		Iterator<Tag> iter = categorySet.iterator();
-		while(iter.hasNext()) {
-			categoryNames.add(iter.next().getName());
+	//
+	public void addTag(Tag tag) { 
+		
+		String table = tag.getTableName();
+		if (table.equals("Categories"))
+			sqlite.insertData(table, "", tag.getName());
+		else if (table.equals("Locations"))
+			sqlite.insertData(table, "", tag.getName() + ", " + tag.getDescription());
+	}
+
+	//
+	public Tag searchTag(String name, String table){
+		
+		ResultSet rs = sqlite.selectQuery(" * ", table, " name = '"+ name +"'");
+		Tag tag = null;
+		
+		try {
+			
+			if(rs.next()) {
+				if (table.equals("Categories")) {
+					tag = new Category(rs.getString("Name"));
+				}	
+				else if (table.equals("Locations")) {
+					tag = new Location(rs.getString("Name"), rs.getString("Description"));
+				}
+			}
+			
+			rs.close();
 		}
-		return categoryNames;
+		catch(SQLException e) {
+			
+		}
+		return tag;
+		
+		
 	}
 }
