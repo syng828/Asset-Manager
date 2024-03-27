@@ -1,7 +1,7 @@
 package mapping;
 
 public class DBinit {
-    private SQLController sqlite = new SQLController();
+    private SQLController sqlite = SQLController.getConnector();
 
     public void dbInit() {
     	
@@ -10,11 +10,14 @@ public class DBinit {
             sqlite.createTables("Categories",
             		"CategoryID INT PRIMARY KEY unique not null AUTO INCREMENT, Name TEXT unique not null");
             sqlite.createTables("Locations",
-            		"LocationID INT PRIMARY KEY unique not null AUTO INCREMENT, Name TEXT unique not null, Description TEXT");
+            		"LocationID INT PRIMARY KEY unique not null AUTO INCREMENT, Name TEXT unique not null, Description TEXT");  
             
-            sqlite.closeConnection();
     	}
-        
+      
+    }
+    
+    public void closeDB() {
+    	sqlite.closeConnection();
     }
 
 }

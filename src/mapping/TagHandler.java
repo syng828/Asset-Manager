@@ -8,8 +8,7 @@ public class TagHandler {
 	private SQLController sqlite;
 
 	public TagHandler() {
-		sqlite = new SQLController();
-		sqlite.connectDB();
+		sqlite = SQLController.getConnector();
 		
 	}
 	

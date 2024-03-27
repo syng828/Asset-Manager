@@ -5,10 +5,15 @@ import java.sql.*;
 
 public class SQLController {
 
+	private static SQLController control = new SQLController();
 	private Connection conn;
 	
-	SQLController() {
+	private SQLController() {
 		conn = null;
+	}
+	
+	protected static SQLController getConnector() {
+		return control;
 	}
 	
 	protected boolean dbExists() {
