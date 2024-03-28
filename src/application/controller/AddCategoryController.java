@@ -1,7 +1,6 @@
 package application.controller;
 
 
-import java.util.List;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -25,13 +24,18 @@ public class AddCategoryController {
 			alert.showAndWait();
 		}
 		//Adds category from text field to categories in database. 
-		else {
+		/* Create a category object, with the categoryTextField.getText() as the category
+		 * Then call the
+		 * TagHandler class to insert it into the database. Add exception if duplicate
+		 * category found?
+		 */
+		/* else {
 			TagHandler.addCategory(categoryTextField.getText());
 			List<String> categories = TagHandler.returnCategories(); //loops through results for testing purposes.
 			for (String category : categories) {
 				System.out.println(category);
 			}
-		} 
+		}  */
 	}
 	
 }
