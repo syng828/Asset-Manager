@@ -3,6 +3,7 @@ package mapping;
 class Category implements Tag {
 	
 	final private String tableName = "Categories";
+	final private String fields = "Name";
 	
 	private String name;
 	
@@ -18,9 +19,11 @@ class Category implements Tag {
 	public String getTableName() {
 		return tableName;
 	}
-	public String getDescription() {
-		
-		return null;
+	public String getFields() {
+		return fields;
+	}
+	public String getInputString() {
+		return "'"+getName()+"'";
 	}
 
 	@Override

@@ -15,11 +15,7 @@ public class TagHandler {
 	//
 	public void addTag(Tag tag) { 
 		
-		String table = tag.getTableName();
-		if (table.equals("Categories"))
-			sqlite.insertData(table, "", tag.getName());
-		else if (table.equals("Locations"))
-			sqlite.insertData(table, "", tag.getName() + ", " + tag.getDescription());
+		System.out.println(sqlite.insertData(tag.getTableName(), tag.getFields(), tag.getInputString()));
 	}
 
 	//

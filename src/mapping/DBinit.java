@@ -2,22 +2,29 @@ package mapping;
 
 public class DBinit {
     private SQLController sqlite = SQLController.getConnector();
+    
+    DBinit(){
+    	
+    }
 
     public void dbInit() {
     	
     	if(!sqlite.dbExists()) {
-    		sqlite.connectDB();
-            sqlite.createTables("Categories",
-            		"CategoryID INT PRIMARY KEY unique not null AUTO INCREMENT, Name TEXT unique not null");
-            sqlite.createTables("Locations",
-            		"LocationID INT PRIMARY KEY unique not null AUTO INCREMENT, Name TEXT unique not null, Description TEXT");  
+    		System.out.println(sqlite.connectDB());
+            System.out.println(sqlite.createTables("Categories",
+            		"CategoryID INTEGER PRIMARY KEY, Name TEXT unique not null"));
+            System.out.println(sqlite.createTables("Locations",
+            		"LocationID INTEGER PRIMARY KEY, Name TEXT unique not null, Description TEXT"));  
             
+    	}
+    	else {
+    		System.out.println(sqlite.connectDB());
     	}
       
     }
     
     public void closeDB() {
-    	sqlite.closeConnection();
+    	System.out.println(sqlite.closeConnection());
     }
 
 }

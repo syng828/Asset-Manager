@@ -9,7 +9,6 @@ public class SQLController {
 	private Connection conn;
 	
 	private SQLController() {
-		conn = null;
 	}
 	
 	protected static SQLController getConnector() {
@@ -24,9 +23,8 @@ public class SQLController {
 		}
 		return false;
 	}
-	
-	protected void connectDB() {
-		
+	protected String connectDB() {
+		System.out.println("starting");
 		try {
 	         Class.forName("org.sqlite.JDBC");
 	         conn = DriverManager.getConnection("jdbc:sqlite:AssetTracker.db");
@@ -34,11 +32,13 @@ public class SQLController {
 		catch( Exception e ) {
 	         System.err.println( e.getClass().getName() + ": " + e.getMessage() );
 	         System.exit(0);
+	         return "Error " + e;
 	      }
-	      System.out.println("Opened database successfully");
+	    return"Opened database successfully";
 	}
 	
 	protected String closeConnection() {
+		
 		try {
 			conn.close();
 		}
@@ -46,7 +46,7 @@ public class SQLController {
 			return "SQL connection error " + e;
 		}
 		
-		return "Connection Successful";
+		return "Connection Closed Successfully";
 		
 	}
 	
@@ -73,10 +73,10 @@ public class SQLController {
 			Statement command = conn.createStatement();
 			String query = "INSERT INTO " +
 							tableName +
-							" (" + schema + ") " +
+							"(" + schema + ") " +
 							"VALUES (" +
 							values+");";
-			
+			System.out.println(query);
 			command.executeUpdate(query);
 			command.close();
 		}

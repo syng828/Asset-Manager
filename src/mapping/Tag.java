@@ -6,7 +6,9 @@ public interface Tag {
 	
 	abstract String getTableName();
 	
-	abstract String getDescription();
+	abstract String getFields();
+	
+	abstract String getInputString();
 
 	boolean equals(Tag o);
 }
