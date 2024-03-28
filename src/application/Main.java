@@ -1,21 +1,16 @@
 package application;
 
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
-import mapping.TagHandler;
 
 public class Main extends Application {
-
+	
+	/*@TODO: Fix the database and make sure it works, then call it in the AddCategoryController
+	and add AddLocationController */ 
+	
 	@Override
 	public void start(Stage primaryStage) {
 		try { 

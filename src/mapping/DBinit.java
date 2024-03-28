@@ -26,6 +26,12 @@ public class DBinit {
     public void closeDB() {
     	System.out.println(sqlite.closeConnection());
     }
+    
+    public static void main (String [] args) { 
+    	DBinit db = new DBinit(); 
+    	db.dbInit();
+    	System.out.println("success");
+    }
 
 }
 

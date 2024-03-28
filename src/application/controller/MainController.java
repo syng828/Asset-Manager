@@ -32,6 +32,12 @@ public class MainController {
 		loadFXML("view/AddNewCategory.fxml"); 
 	}
 	
+	//Replaces display with the AddNewLocation.fxml page when button is clicked
+	@FXML public void goToAddLocation() { 
+		loadFXML("view/AddNewLocation.fxml"); 
+	}
+	
+	
 	//Loads the display on the right.
 	private void loadFXML(String fxmlPath) { 
 		URL url = getClass().getClassLoader().getResource(fxmlPath); 
