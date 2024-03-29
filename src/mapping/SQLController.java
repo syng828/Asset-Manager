@@ -70,6 +70,7 @@ public class SQLController {
 	
 	protected String insertData(String tableName, String schema, String values ) {
 		try {
+			System.out.println("attempting insertion");
 			Statement command = conn.createStatement();
 			String query = "INSERT INTO " +
 							tableName +
@@ -88,15 +89,17 @@ public class SQLController {
 	
 	protected ResultSet selectQuery(String fields, String tableName, String condition) {
 		try {
+			System.out.println("Attempting selection query");
 			Statement command = conn.createStatement();
 			String query = "SELECT " + fields + " FROM " + tableName;
 			
 			if(!condition.equals("")) {
-				query+="WHERE "+condition;
+				query+=" WHERE "+condition;
 			}
 			
 			query+= ";";
 			
+			System.out.println(query);
 			ResultSet rs = command.executeQuery(query);
 			command.close();
 			return rs;

@@ -21,7 +21,7 @@ public class TagHandler {
 	//
 	public Tag searchTag(String name, String table){
 		
-		ResultSet rs = sqlite.selectQuery(" * ", table, " name = '"+ name +"'");
+		ResultSet rs = sqlite.selectQuery(" * ", table, "name = '"+ name +"'");
 		Tag tag = null;
 		
 		try {
