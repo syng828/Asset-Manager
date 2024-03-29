@@ -13,9 +13,11 @@ public class TagHandler {
 	}
 	
 	//
-	public void addTag(Tag tag) { 
+	public String addTag(Tag tag) { 
 		
-		System.out.println(sqlite.insertData(tag.getTableName(), tag.getFields(), tag.getInputString()));
+		String result = (sqlite.insertData(tag.getTableName(), tag.getFields(), tag.getInputString()));
+		
+		return result;
 	}
 
 	//

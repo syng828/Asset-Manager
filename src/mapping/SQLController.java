@@ -82,9 +82,9 @@ public class SQLController {
 			command.close();
 		}
 		catch(SQLException e) {
-			return "SQL connection error " + e;
+			return "Error adding tag";
 		}
-		return "Successfully inserted rows";
+		return "Successfully added new Tag";
 	}
 	
 	protected ResultSet selectQuery(String fields, String tableName, String condition) {

@@ -10,6 +10,7 @@ import mapping.TagHandler;
 import mapping.Category;
 
 
+
 //Controls the AddNewCategory.fxml
 public class AddCategoryController { 
 	
@@ -33,31 +34,21 @@ public class AddCategoryController {
 		 */
 		
 		String categoryName = categoryTextField.getText();
-		
-		Category category = new Category(categoryName);
+		Category category;
 		TagHandler tagHandler = new TagHandler();
+		if(categoryName != null) {
+	
+			category = new Category(categoryName);
+			String results = tagHandler.addTag(category);
+			Alert alert = new Alert(Alert.AlertType.INFORMATION);
+	        alert.setTitle("Notice:");
+	        alert.setHeaderText(null);
+	        alert.setContentText(results);
+	        alert.showAndWait();
+		}
 		
-		//Check if the category already exists in the db
-		if (tagHandler.searchTag(category.getName(), category.getTableName()) != null ) {
-			Alert existed = new Alert(Alert.AlertType.WARNING);
-			existed.setTitle("Category already exists");
-			existed.setContentText("Please enter new category name");
-			existed.showAndWait();
-			return;
-		} 
-		// Add Category into db
-		tagHandler.addTag(category);
-		
-		// Show a success message
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Success");
-        alert.setHeaderText(null);
-        alert.setContentText("Category added successfully.");
-        alert.showAndWait();
-        
-        // Clear the text field
-        categoryTextField.clear();
-        
+		// Clear the text field	
+		categoryTextField.clear();  
 	}
 	
 }

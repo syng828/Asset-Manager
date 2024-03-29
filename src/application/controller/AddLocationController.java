@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import mapping.Location;
 import mapping.TagHandler;
 
 public class AddLocationController {
@@ -33,6 +34,27 @@ public class AddLocationController {
 				System.out.println(category);
 			}
 		}  */
+		String locationName = locationTextField.getText();
+		String description = descriptionTextField.getText();
+		Location location;
+		TagHandler tagHandler = new TagHandler();
+		if(locationName != null) {
+			if(description != null) {
+				location = new Location(locationName, description);
+			}
+			else {
+				location = new Location(locationName);
+			}
+			String results = tagHandler.addTag(location);
+			Alert alert = new Alert(Alert.AlertType.INFORMATION);
+	        alert.setTitle("Notice:");
+	        alert.setHeaderText(null);
+	        alert.setContentText(results);
+	        alert.showAndWait();
+		}
+		locationTextField.clear();
+		descriptionTextField.clear();
+		
 	}
 	
 }
