@@ -1,5 +1,6 @@
 package mapping;
 
+//Basic class to store data on single location
 public class Location implements Tag {
 	
 	final private String tableName = "Locations";

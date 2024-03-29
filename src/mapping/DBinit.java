@@ -1,5 +1,7 @@
 package mapping;
 
+//Facade class for limited external access to SQLController including only initialization, opening, and
+//Closing DB connection.
 public class DBinit {
     private SQLController sqlite = SQLController.getConnector();
     
@@ -7,6 +9,8 @@ public class DBinit {
     	
     }
 
+    //If AssetTracker.db file does not exist, create the file and necessary tables, and connect to DB
+    //otherwise, only open connection to DB
     public void dbInit() {
     	
     	if(!sqlite.dbExists()) {
@@ -23,15 +27,11 @@ public class DBinit {
       
     }
     
+    //Closes DB connection
     public void closeDB() {
     	System.out.println(sqlite.closeConnection());
     }
-    
-    public static void main (String [] args) { 
-    	DBinit db = new DBinit(); 
-    	db.dbInit();
-    	System.out.println("success");
-    }
+
 
 }
 

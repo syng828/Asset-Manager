@@ -1,5 +1,6 @@
 package mapping;
 
+//Basic class to store data for single category
 public class Category implements Tag {
 	
 	final private String tableName = "Categories";

@@ -4,17 +4,20 @@ import java.io.File;
 import java.sql.*;
 
 public class SQLController {
-
+	
+	//Singleton pattern usage for SQLController to only have one instance handle SQLite connection per session
 	private static SQLController control = new SQLController();
 	private Connection conn;
 	
 	private SQLController() {
 	}
 	
+	//Returns single static SQLController instance
 	protected static SQLController getConnector() {
 		return control;
 	}
 	
+	//Checks if AssetTracker.db exists, return true if exists
 	protected boolean dbExists() {
 		File file = new File ("AssetTracker.db");
 		
@@ -23,6 +26,8 @@ public class SQLController {
 		}
 		return false;
 	}
+	
+	//Establishes connection to Sqlite DB, returns status feedback string
 	protected String connectDB() {
 		System.out.println("starting");
 		try {
@@ -37,6 +42,7 @@ public class SQLController {
 	    return"Opened database successfully";
 	}
 	
+	//Closes connection to Sqlite DB, returns status feedback string
 	protected String closeConnection() {
 		
 		try {
@@ -50,6 +56,8 @@ public class SQLController {
 		
 	}
 	
+	//Executes 'CREATE TABLE' SQL command based String parameters as fragments, 
+	//returns status feedback string
 	protected String createTables(String tableName, String fields) {
 		
 		try {
@@ -68,6 +76,7 @@ public class SQLController {
 		
 	}
 	
+	//Executes 'INSERT' SQL query based on string parameters as fragments, returns status feedback string
 	protected String insertData(String tableName, String schema, String values ) {
 		try {
 			System.out.println("attempting insertion");
@@ -87,6 +96,7 @@ public class SQLController {
 		return "Successfully added new Tag";
 	}
 	
+	/*PROTOTYPED 'SELECT' SQL query method, still in development DO NOT USE
 	protected ResultSet selectQuery(String fields, String tableName, String condition) {
 		try {
 			System.out.println("Attempting selection query");
@@ -108,7 +118,7 @@ public class SQLController {
 			System.out.println("SQL connection error " + e);
 			return null;
 		}
-		
 	}
+	*/
 
 }
