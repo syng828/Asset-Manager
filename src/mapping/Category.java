@@ -1,6 +1,6 @@
 package mapping;
 
-class Category implements Tag {
+public class Category implements Tag {
 	
 	final private String tableName = "Categories";
 	final private String fields = "Name";
@@ -23,7 +23,7 @@ class Category implements Tag {
 		return fields;
 	}
 	public String getInputString() {
-		return "'"+getName()+"'";
+		return "'" + getName() + "'";
 	}
 
 	@Override

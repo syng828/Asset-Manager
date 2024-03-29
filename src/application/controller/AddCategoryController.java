@@ -7,6 +7,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import mapping.TagHandler;
+import mapping.Category;
 
 
 //Controls the AddNewCategory.fxml
@@ -22,6 +23,7 @@ public class AddCategoryController {
 			alert.setTitle("Missing input");
 			alert.setContentText("Please enter a category name"); 
 			alert.showAndWait();
+			return;
 		}
 		//Adds category from text field to categories in database. 
 		/* Create a category object, with the categoryTextField.getText() as the category
@@ -29,13 +31,33 @@ public class AddCategoryController {
 		 * TagHandler class to insert it into the database. Add exception if duplicate
 		 * category found?
 		 */
-		/* else {
-			TagHandler.addCategory(categoryTextField.getText());
-			List<String> categories = TagHandler.returnCategories(); //loops through results for testing purposes.
-			for (String category : categories) {
-				System.out.println(category);
-			}
-		}  */
+		
+		String categoryName = categoryTextField.getText();
+		
+		Category category = new Category(categoryName);
+		TagHandler tagHandler = new TagHandler();
+		
+		//Check if the category already exists in the db
+		if (tagHandler.searchTag(category.getName(), category.getTableName()) != null ) {
+			Alert existed = new Alert(Alert.AlertType.WARNING);
+			existed.setTitle("Category already exists");
+			existed.setContentText("Please enter new category name");
+			existed.showAndWait();
+			return;
+		} 
+		// Add Category into db
+		tagHandler.addTag(category);
+		
+		// Show a success message
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Success");
+        alert.setHeaderText(null);
+        alert.setContentText("Category added successfully.");
+        alert.showAndWait();
+        
+        // Clear the text field
+        categoryTextField.clear();
+        
 	}
 	
 }

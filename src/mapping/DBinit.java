@@ -3,7 +3,7 @@ package mapping;
 public class DBinit {
     private SQLController sqlite = SQLController.getConnector();
     
-    DBinit(){
+    public DBinit(){
     	
     }
 

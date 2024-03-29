@@ -73,7 +73,7 @@ public class SQLController {
 			Statement command = conn.createStatement();
 			String query = "INSERT INTO " +
 							tableName +
-							"(" + schema + ") " +
+							" (" + schema + ") " +
 							"VALUES (" +
 							values+");";
 			System.out.println(query);

@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.layout.HBox;
+import mapping.DBinit;
 
 public class Main extends Application {
 	
@@ -26,6 +27,16 @@ public class Main extends Application {
 	}
 	
 	public static void main(String[] args) {
+		DBinit dBinit = new DBinit();
+		// initialize the database before launching the application
+		dBinit.dbInit();
+		
+		
 		launch(args);
+		
+		//Register a shutdown hook to close the database when the application exists
+		Runtime.getRuntime().addShutdownHook(new Thread( () -> {
+			dBinit.closeDB();
+		}));
 	}
 }
