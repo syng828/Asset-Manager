@@ -26,13 +26,9 @@ public class AddCategoryController {
 			alert.showAndWait();
 			return;
 		}
-		//Adds category from text field to categories in database. 
-		/* Create a category object, with the categoryTextField.getText() as the category
-		 * Then call the
-		 * TagHandler class to insert it into the database. Add exception if duplicate
-		 * category found?
-		 */
 		
+		/*Creates a tagHandler of type Category, and adds the tag. The addTag method adds
+		 the category into the database. */
 		String categoryName = categoryTextField.getText();
 		Category category;
 		TagHandler tagHandler = new TagHandler();

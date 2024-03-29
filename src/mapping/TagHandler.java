@@ -20,30 +20,4 @@ public class TagHandler {
 		
 		return result;
 	}
-
-	/* PROTOTYPE search single Tag by name and type. Still under development and testing DO NOT USE
-	public Tag searchTag(String name, String table){
-		
-		ResultSet rs = sqlite.selectQuery(" * ", table, "name = '"+ name +"'");
-		Tag tag = null;
-		
-		try {
-			
-			if(rs.next()) {
-				if (table.equals("Categories")) {
-					tag = new Category(rs.getString("Name"));
-				}	
-				else if (table.equals("Locations")) {
-					tag = new Location(rs.getString("Name"), rs.getString("Description"));
-				}
-			}
-			
-			rs.close();
-		}
-		catch(SQLException e) {
-			
-		}
-		return tag;
-	}
-	*/
 }

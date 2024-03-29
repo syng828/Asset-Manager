@@ -32,7 +32,6 @@ public class DBinit {
     	System.out.println(sqlite.closeConnection());
     }
 
-
 }
 
 

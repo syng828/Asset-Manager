@@ -95,30 +95,5 @@ public class SQLController {
 		}
 		return "Successfully added new Tag";
 	}
-	
-	/*PROTOTYPED 'SELECT' SQL query method, still in development DO NOT USE
-	protected ResultSet selectQuery(String fields, String tableName, String condition) {
-		try {
-			System.out.println("Attempting selection query");
-			Statement command = conn.createStatement();
-			String query = "SELECT " + fields + " FROM " + tableName;
-			
-			if(!condition.equals("")) {
-				query+=" WHERE "+condition;
-			}
-			
-			query+= ";";
-			
-			System.out.println(query);
-			ResultSet rs = command.executeQuery(query);
-			command.close();
-			return rs;
-		}
-		catch(SQLException e) {
-			System.out.println("SQL connection error " + e);
-			return null;
-		}
-	}
-	*/
 
 }
