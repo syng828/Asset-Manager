@@ -1,5 +1,6 @@
 package application.controller;
 
+//@TODO: Add a redirect back to home once successful
 
 import java.io.IOException;
 import java.net.URL;
@@ -30,6 +31,12 @@ public class MainController {
 	@FXML public void goToAddCategory() { 
 		loadFXML("view/AddNewCategory.fxml"); 
 	}
+	
+	//Replaces display with the AddNewLocation.fxml page when button is clicked
+	@FXML public void goToAddLocation() { 
+		loadFXML("view/AddNewLocation.fxml"); 
+	}
+	
 	
 	//Loads the display on the right.
 	private void loadFXML(String fxmlPath) { 
