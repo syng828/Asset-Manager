@@ -95,5 +95,24 @@ public class SQLController {
 		}
 		return "Successfully added new Tag";
 	}
+	
+	//Executes 'SELECT' SQL query based on string parameters as fragments, returns result of select query
+	protected ResultSet selectData(String tableName, String value, String field, String conditions)  { 
+		try { 
+			System.out.println("attempting to select data"); 
+			Statement command = conn.createStatement();
+			String query = "SELECT " + value + " FROM " + 
+							tableName +
+							" WHERE " + conditions + " = " + field; 
+			System.out.println(query);
+			ResultSet rs = command.executeQuery(query);
+			return rs;
+		}
+		catch(SQLException e) { 
+			System.out.println(e);
+			return null;
+		}
+	}
+
 
 }
