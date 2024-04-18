@@ -1,29 +1,29 @@
 package mapping;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Asset {
 	final private String tableName = "Assets";
 	final private String fields = "Name, Category, Location, PurchaseDate,"
-			+ " Description, PurchasedValue, WarrantyExpirationDate";
+			+ " Description, PurchasedValue, WarrantyExpDate";
 	
 	private String name; 
 	private String category; 
 	private String location;
 	private Date purchaseDate;
 	private String description;
-	private float purchasedValue;
-	private Date warrantyExpirationDate;
+	private int purchasedValue;
+	private Date warrantyExpDate;
 	
 	public Asset(String name, String category, String location) { 
 		this.name = name;
 		this.category = category;
 		this.location = location; 
 		
-		this.purchaseDate = new Date(0);
+		this.purchaseDate = null;
 		this.description = ""; 
 		this.purchasedValue = 0;
-		this.warrantyExpirationDate = new Date(0); 
+		this.warrantyExpDate = null;
 	}
 	public void setPurchaseDate(Date purchaseDate) { 
 		this.purchaseDate = purchaseDate; 
@@ -31,11 +31,11 @@ public class Asset {
 	public void setDescription(String description) { 
 		this.description = description; 
 	}
-	public void setPurchasedValue (float purchasedValue) { 
+	public void setPurchasedValue (int purchasedValue) { 
 		this.purchasedValue = purchasedValue; 
 	}
-	public void setWarrantyExpirationDate(Date warrantyExpirationDate) { 
-		this.warrantyExpirationDate = warrantyExpirationDate; 
+	public void setWarrantyExpDate(Date warrantyExpDate) { 
+		this.warrantyExpDate = warrantyExpDate; 
 	}
 	
 	public String getName() {
@@ -45,11 +45,14 @@ public class Asset {
 	public String getTableName() {
 		return tableName;
 	}
+	
 	public String getFields() {
 		return fields;
 	}
 	
 	public String getInputString() {
-		return "'" + getName() + "'";
+		return "'"+ name + "', " + "'"+category+"'" + ", " + "'"+location+"'" + 
+				", " + "'"+purchaseDate+"'" + ", " + "'"+description+"'" + ", " +  "'"+purchasedValue+"'"
+			+ ", " + "'"+warrantyExpDate+"'";
 	}
 }

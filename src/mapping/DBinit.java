@@ -26,6 +26,8 @@ public class DBinit {
     	else {
     		System.out.println(sqlite.connectDB());
     	}
+    	
+    	TagHandler.initMap();
       
     }
     

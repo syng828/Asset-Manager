@@ -3,6 +3,8 @@ package mapping;
 import java.io.File;
 import java.sql.*;
 
+import org.sqlite.SQLiteErrorCode;
+
 public class SQLController {
 	
 	//Singleton pattern usage for SQLController to only have one instance handle SQLite connection per session
@@ -91,19 +93,22 @@ public class SQLController {
 			command.close();
 		}
 		catch(SQLException e) {
-			return "Error adding tag";
+			if (e.getMessage().contains("is not unique")) {
+	            return "Duplicate entry in " + tableName;
+	        } else {
+	            return "Error inserting into " + tableName;
+	        }
 		}
-		return "Successfully added new Tag";
+		return "Successfully added entry into " + tableName;
 	}
 	
 	//Executes 'SELECT' SQL query based on string parameters as fragments, returns result of select query
-	protected ResultSet selectData(String tableName, String value, String field, String conditions)  { 
+	protected ResultSet selectAllData(String tableName)  { 
 		try { 
 			System.out.println("attempting to select data"); 
 			Statement command = conn.createStatement();
-			String query = "SELECT " + value + " FROM " + 
-							tableName +
-							" WHERE " + conditions + " = " + field; 
+			String query = "SELECT * FROM " + 
+							tableName;  
 			System.out.println(query);
 			ResultSet rs = command.executeQuery(query);
 			return rs;
