@@ -42,6 +42,12 @@ public class MainController {
 		loadFXML("view/AddNewAsset.fxml");
 	}
 	
+	@FXML public void goToEditAsset() {
+		loadFXML("view/ListAsset.fxml");
+	}
+	
+	
+	
 	//Loads the display on the right.
 	private void loadFXML(String fxmlPath) { 
 		URL url = getClass().getClassLoader().getResource(fxmlPath); 
