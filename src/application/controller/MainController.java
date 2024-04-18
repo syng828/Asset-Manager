@@ -37,6 +37,10 @@ public class MainController {
 		loadFXML("view/AddNewLocation.fxml"); 
 	}
 	
+	//Replaces display with the AddNewLocation.fxml page when button is clicked
+	@FXML public void goToAddAsset() { 
+		loadFXML("view/AddNewAsset.fxml");
+	}
 	
 	//Loads the display on the right.
 	private void loadFXML(String fxmlPath) { 

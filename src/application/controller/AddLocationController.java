@@ -28,7 +28,7 @@ public class AddLocationController {
 			Location location;
 			TagHandler tagHandler = new TagHandler();
 			if(locationName != null) {
-				if(description != null) {
+				if(!description.isEmpty()) {
 					location = new Location(locationName, description);
 				}
 				else {

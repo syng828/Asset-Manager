@@ -19,11 +19,15 @@ public class DBinit {
             		"CategoryID INTEGER PRIMARY KEY, Name TEXT unique not null"));
             System.out.println(sqlite.createTables("Locations",
             		"LocationID INTEGER PRIMARY KEY, Name TEXT unique not null, Description TEXT"));  
-            
+            System.out.println(sqlite.createTables("Assets",
+            		"AssetID INTEGER PRIMARY KEY, Name TEXT unique not null, Category TEXT not null,"
+            		+ " Location TEXT not null, PurchaseDate DATE, Description TEXT, PurchasedValue INT, WarrantyExpDate DATE"));
     	}
     	else {
     		System.out.println(sqlite.connectDB());
     	}
+    	
+    	TagHandler.initMap();
       
     }
     

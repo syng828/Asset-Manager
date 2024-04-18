@@ -13,8 +13,10 @@
             <Button fx:id="addCategoryBtn" layoutX="36.0" layoutY="89.0" mnemonicParsing="false" onAction="#goToAddCategory" prefHeight="26.0" prefWidth="112.0" text="Add Category" />
             <Button fx:id="homeBtn" layoutX="14.0" layoutY="23.0" mnemonicParsing="false" onAction="#goToHome" text="Home" />
             <Button fx:id="addLocationBtn" layoutX="36.0" layoutY="145.0" mnemonicParsing="false" onAction="#goToAddLocation" prefHeight="30.0" prefWidth="112.0" text="Add Location" />
+            <Button fx:id="addAssetBtn" layoutX="36.0" layoutY="200.0" mnemonicParsing="false" onAction="#goToAddAsset" prefHeight="30.0" prefWidth="112.0" text="Add Asset" />
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="400.0" prefWidth="400.0" />
    </children>
 </HBox>
+
