@@ -42,6 +42,14 @@ public class Asset {
 		return name;
 	}
 	
+	public String getCategory() {
+		return category;
+	}
+	
+	public String getLocation() {
+		return location;
+	}
+	
 	public String getTableName() {
 		return tableName;
 	}
