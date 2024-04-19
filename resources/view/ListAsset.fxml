@@ -19,7 +19,7 @@
       <Button fx:id="searchBtn" layoutX="160.0" layoutY="129.0" mnemonicParsing="false" onAction="#searchAsset" prefHeight="39.0" prefWidth="83.0" text="Search" />
       <TableView fx:id="table" layoutX="68.0" layoutY="186.0" prefHeight="200.0" prefWidth="269.0">
         <columns>
-          <TableColumn fx:id="nameCol" prefWidth="73.0" text="Name" />
+          <TableColumn fx:id="nameCol" prefWidth="73.0" text="Asset" />
           <TableColumn fx:id="categoryCol" prefWidth="98.0" text="Category" />
             <TableColumn fx:id="locationCol" prefWidth="97.0" text="Location" />
         </columns>
