@@ -7,7 +7,7 @@ public class Asset {
 	final private String fields = "Name, Category, Location, PurchaseDate,"
 			+ " Description, PurchasedValue, WarrantyExpDate";
 	
-	private String name; 
+	private String name;  
 	private String category; 
 	private String location;
 	private Date purchaseDate;
@@ -40,6 +40,14 @@ public class Asset {
 	
 	public String getName() {
 		return name;
+	}
+	
+	public String getCategory() {
+		return category;
+	}
+	
+	public String getLocation() {
+		return location;
 	}
 	
 	public String getTableName() {

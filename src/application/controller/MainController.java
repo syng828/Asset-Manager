@@ -8,6 +8,8 @@ import java.net.URL;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox; 
 
@@ -41,6 +43,12 @@ public class MainController {
 	@FXML public void goToAddAsset() { 
 		loadFXML("view/AddNewAsset.fxml");
 	}
+	
+	@FXML public void goToEditAsset() {
+		loadFXML("view/ListAsset.fxml");
+	}
+	
+	
 	
 	//Loads the display on the right.
 	private void loadFXML(String fxmlPath) { 

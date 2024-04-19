@@ -33,5 +33,24 @@ public class AssetHandler {
 		}
 		return null;
 	}
+
+	public static ArrayList<Asset> search(String sub) {
+		// TODO Auto-generated method stub
+		
+		try {
+			ResultSet rs = sqlite.select(sub);
+			ArrayList<Asset> a = new ArrayList<>();
+			while (rs.next()) { 
+				Asset assets = new Asset(rs.getString("Name"), rs.getString("Category"), rs.getString("Location"));
+				a.add(assets);
+			}
+			return a;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
 	
 }

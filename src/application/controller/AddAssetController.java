@@ -46,7 +46,7 @@ public class AddAssetController {
 		initCategoryDropDown();
 		initLocationDropDown();
 	}
-	
+	 
 	@FXML public void createAsset() { 
 		//Returns an alert if the asset, category, or location is not specified. 
 		if (assetTextField.getText().isEmpty() || categoryDropDown.getValue() == null || locationDropDown.getValue() == null) { 

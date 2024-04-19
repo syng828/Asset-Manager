@@ -118,6 +118,22 @@ public class SQLController {
 			return null;
 		}
 	}
+	
+	protected ResultSet select(String sub) {
+		try {
+			System.out.println("Fetching data matching with " + sub);
+			Statement command = conn.createStatement();
+			//String query = "SELECT * FROM Assets WHERE name LIKE sub ";
+			String query = "SELECT * FROM Assets WHERE name LIKE '%" +
+		               sub+ "%';";
+			ResultSet rs = command.executeQuery(query);
+			return rs;
+		}
+		catch(SQLException e) { 
+			System.out.println(e);
+			return null;
+		}
+	}
 
 
 }
