@@ -64,7 +64,7 @@ public class ListAssetController {
 		
 	}
 	
-	//navigates to edit page
+	//deletes asset
 	@FXML public void deleteAsset() { 
 		if (table.getSelectionModel().getSelectedItem() == null) { 
 			Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -75,6 +75,7 @@ public class ListAssetController {
 			// Implement delete function
 			Asset asset = table.getSelectionModel().getSelectedItem();
 			AssetHandler.deleteAsset(asset);
+			table.getItems().remove(asset); 
 			System.out.println("Deleted Asset: " + table.getSelectionModel().getSelectedItem().getName());
 		}
 	}
