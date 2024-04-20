@@ -53,6 +53,7 @@ public class ListAssetController {
 		locationCol.setCellValueFactory(new PropertyValueFactory<Asset, String>("location"));
 	
 		table.getColumns().clear();
+		table.getItems().clear();
 		table.getColumns().add(nameCol);
 		table.getColumns().add(categoryCol);
 		table.getColumns().add(locationCol);
