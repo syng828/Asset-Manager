@@ -63,4 +63,19 @@ public class ListAssetController {
 		}
 		
 	}
+	
+	//navigates to edit page
+	@FXML public void deleteAsset() { 
+		if (table.getSelectionModel().getSelectedItem() == null) { 
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+		    alert.setTitle("No Asset Selected");
+		    alert.setContentText("Please select an asset."); 
+		    alert.showAndWait();
+		} else { 
+			// Implement delete function
+			Asset asset = table.getSelectionModel().getSelectedItem();
+			AssetHandler.deleteAsset(asset);
+			System.out.println("Deleted Asset: " + table.getSelectionModel().getSelectedItem().getName());
+		}
+	}
 }

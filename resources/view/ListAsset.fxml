@@ -16,7 +16,8 @@
          </font>
       </Label>
       <TextField fx:id="searchBar" layoutX="121.0" layoutY="87.0" promptText="Enter Asset Name..." />
-      <Button fx:id="searchBtn" layoutX="160.0" layoutY="129.0" mnemonicParsing="false" onAction="#searchAsset" prefHeight="39.0" prefWidth="83.0" text="Search" />
+      <Button fx:id="searchBtn" layoutX="121.0" layoutY="132.0" mnemonicParsing="false" onAction="#searchAsset" prefHeight="39.0" prefWidth="83.0" text="Search" />
+      <Button layoutX="225.0" layoutY="132.0" mnemonicParsing="false" onAction="#deleteAsset" prefHeight="39.0" prefWidth="83.0" text="Delete" />
       <TableView fx:id="table" layoutX="68.0" layoutY="186.0" prefHeight="200.0" prefWidth="269.0">
         <columns>
           <TableColumn fx:id="nameCol" prefWidth="73.0" text="Asset" />

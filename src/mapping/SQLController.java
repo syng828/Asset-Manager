@@ -78,6 +78,22 @@ public class SQLController {
 		
 	}
 	
+	protected String deleteData(String sub) {
+		try {
+			Statement command = conn.createStatement();
+			//String query = "SELECT * FROM Assets WHERE name LIKE sub ";
+			String query = "DELETE FROM Assets WHERE name='" + sub + "';";
+			System.out.println(query);
+			command.executeQuery(query);
+			command.close();
+		}
+		catch(SQLException e) { 
+			return "SQL connection error " + e;
+		}
+		
+		return "Asset successfully deleted";
+	}
+	
 	//Executes 'INSERT' SQL query based on string parameters as fragments, returns status feedback string
 	protected String insertData(String tableName, String schema, String values ) {
 		try {
