@@ -25,6 +25,19 @@ public class Asset {
 		this.purchasedValue = 0;
 		this.warrantyExpDate = null;
 	}
+	
+	public void setName(String name) { 
+		this.name = name;
+	}
+	
+	public void setCategory(String category) { 
+		this.category = category;
+	}
+	
+	public void setLocation(String location) { 
+		this.location = location;
+	}
+	
 	public void setPurchaseDate(Date purchaseDate) { 
 		this.purchaseDate = purchaseDate; 
 	}
@@ -50,6 +63,22 @@ public class Asset {
 		return location;
 	}
 	
+	public Date getPurchaseDate() { 
+		return purchaseDate; 
+	}
+	
+	public String getDescription() { 
+		return description;
+	}
+	
+	public int getPurchasedValue() { 
+		return purchasedValue;
+	}
+	
+	public Date getWarrantyExpDate() { 
+		return warrantyExpDate; 
+	}
+	
 	public String getTableName() {
 		return tableName;
 	}
@@ -59,8 +88,22 @@ public class Asset {
 	}
 	
 	public String getInputString() {
+		String purchaseString; 
+		String warrantyString;
+		if (purchaseDate == null) 
+			purchaseString = "NULL";
+		else
+			purchaseString = purchaseDate.toString();
+		System.out.println(purchaseString);
+		
+		if (warrantyExpDate == null) 
+			warrantyString = "NULL";
+		else
+			warrantyString = warrantyExpDate.toString();
+		System.out.println(warrantyString);
+		
 		return "'"+ name + "', " + "'"+category+"'" + ", " + "'"+location+"'" + 
-				", " + "'"+purchaseDate+"'" + ", " + "'"+description+"'" + ", " +  "'"+purchasedValue+"'"
-			+ ", " + "'"+warrantyExpDate+"'";
+				", " + "'"+purchaseString+"'" + ", " + "'"+description+"'" + ", " +  "'"+purchasedValue+"'"
+			+ ", " + "'"+warrantyString+"'";
 	}
 }

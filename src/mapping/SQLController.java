@@ -119,12 +119,11 @@ public class SQLController {
 		}
 	}
 	
-	protected ResultSet select(String sub) {
+	protected ResultSet selectLike(String tableName, String matchField, String sub) {
 		try {
 			System.out.println("Fetching data matching with " + sub);
 			Statement command = conn.createStatement();
-			//String query = "SELECT * FROM Assets WHERE name LIKE sub ";
-			String query = "SELECT * FROM Assets WHERE name LIKE '%" +
+			String query = "SELECT * FROM " + tableName + " WHERE " + matchField + " LIKE '%" +
 		               sub+ "%';";
 			ResultSet rs = command.executeQuery(query);
 			return rs;
@@ -134,6 +133,33 @@ public class SQLController {
 			return null;
 		}
 	}
-
-
-}
+	
+	protected ResultSet selectExact(String tableName, String matchField, String matchValue) { 
+		try {
+			Statement command = conn.createStatement();
+			String query = "SELECT * FROM " + tableName + " WHERE " + matchField + "=" +
+		               matchValue + ";";
+			System.out.println(query); 
+			ResultSet rs = command.executeQuery(query);
+			return rs;
+		}
+		catch(SQLException e) { 
+			System.out.println(e);
+			return null;
+		}
+	}
+	
+	protected void editData(String tableName, String field, String value, String matchField, String matchValue) throws SQLException{
+		try { 
+			Statement command = conn.createStatement(); 
+			String query = "UPDATE " + tableName + " SET " + field + 
+					" = " + value + " WHERE " + matchField + " = " + matchValue + ";"; 
+			command.executeUpdate(query);
+			command.close(); 
+		}
+		catch (SQLException e) { 
+			System.out.println(e);
+			throw e;
+		}
+	}
+	}
