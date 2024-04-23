@@ -60,6 +60,7 @@ public class ListAssetController {
 		locationCol.setCellValueFactory(new PropertyValueFactory<Asset, String>("location"));
 	
 		table.getColumns().clear();
+		table.getItems().clear();
 		table.getColumns().add(nameCol);
 		table.getColumns().add(categoryCol);
 		table.getColumns().add(locationCol);
@@ -100,3 +101,20 @@ public class ListAssetController {
 		}
 		
 	}
+
+	//deletes asset
+	@FXML public void deleteAsset() { 
+		if (table.getSelectionModel().getSelectedItem() == null) { 
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+		    alert.setTitle("No Asset Selected");
+		    alert.setContentText("Please select an asset."); 
+		    alert.showAndWait();
+		} else { 
+			// Implement delete function
+			Asset asset = table.getSelectionModel().getSelectedItem();
+			AssetHandler.deleteAsset(asset);
+			table.getItems().remove(asset); 
+			System.out.println("Deleted Asset: " + table.getSelectionModel().getSelectedItem().getName());
+		}
+	}
+}

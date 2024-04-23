@@ -66,5 +66,9 @@ public class AssetHandler {
 		}
 	}
 	
+	public static String deleteAsset(Asset asset) {
+		String result = sqlite.deleteData(asset.getName());
+		return result;
+	}
 	
 }

@@ -24,7 +24,7 @@
             <TableColumn fx:id="locationCol" prefWidth="97.0" text="Location" />
         </columns>
       </TableView>
-      <Button layoutX="274.0" layoutY="344.0" mnemonicParsing="false" text="Delete" />
+      <Button layoutX="274.0" layoutY="344.0" mnemonicParsing="false" text="Delete" onAction="#deleteAsset" />
       <Button fx:id="editAssetBtn" layoutX="205.0" layoutY="344.0" mnemonicParsing="false" onAction="#goToEdit" prefHeight="30.0" prefWidth="60.0" text="Edit" />
    </children>
 </AnchorPane>
