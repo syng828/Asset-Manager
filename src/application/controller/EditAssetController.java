@@ -96,11 +96,22 @@ public class EditAssetController {
 		
 		String description = descriptionTextArea.getText(); 
 		if (description.isEmpty())
-				description = ""; 
-		int purchasedInteger; 
-		
+				description = "";  
+	
+		int purchasedInteger = 0;
 		try { 
-			purchasedInteger = Integer.parseInt(purchasedTextField.getText());
+			if (!purchasedTextField.getText().isEmpty()) { 
+				purchasedInteger = Integer.parseInt(purchasedTextField.getText()); 
+			}
+		} catch (NumberFormatException e) { 
+			 Alert alert = new Alert(Alert.AlertType.ERROR);
+		     alert.setTitle("Invalid input");
+		     alert.setContentText("Please enter a valid integer for purchased value."); 
+		     alert.showAndWait();
+		     return;
+		}
+			
+		try { 
 			assetHandler.updateAsset("Category", "'"+category+"'", asset.getName());
 			assetHandler.updateAsset("Location", "'"+location+"'", asset.getName());
 			assetHandler.updateAsset("PurchaseDate", "'"+purchaseString+"'", asset.getName());
@@ -108,12 +119,6 @@ public class EditAssetController {
 			assetHandler.updateAsset("PurchasedValue", Integer.toString(purchasedInteger), asset.getName());
 			assetHandler.updateAsset("WarrantyExpDate", "'"+warrantyString+"'", asset.getName());
 			assetHandler.updateAsset("Name", "'"+name+"'", asset.getName());
-		} catch (NumberFormatException e ) { 
-			 Alert alert = new Alert(Alert.AlertType.ERROR);
-		     alert.setTitle("Invalid input");
-		     alert.setContentText("Please enter a valid integer for purchased value."); 
-		     alert.showAndWait();
-		     return;
 		} catch (SQLException e ) { 
 		 Alert alert = new Alert(Alert.AlertType.ERROR);
 	     alert.setTitle("Invalid input");
