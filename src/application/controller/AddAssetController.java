@@ -1,6 +1,7 @@
 package application.controller;
 
 import java.util.ArrayList;
+import java.sql.Date;
 import java.time.LocalDate;
 
 import javafx.collections.FXCollections;
@@ -25,28 +26,26 @@ public class AddAssetController {
 	@FXML ChoiceBox<String> locationDropDown;
 	@FXML DatePicker purchaseDatePicker;
 	@FXML TextArea descriptionTextArea;
-	@FXML DatePicker warrantyDateDropDown;
+	@FXML DatePicker warrantyDatePicker;
 	@FXML TextField purchasedTextField;
 	@FXML Button createAssetBtn; 
 
 	//Populates the dropdown with the location and categories in the db 
 	private void initCategoryDropDown()  { 
 		ArrayList<String> categories = TagHandler.getCategoryList();
-		ObservableList<String> categoryOptions = FXCollections.observableArrayList(categories);
-	    categoryDropDown.setItems(categoryOptions);
+	    categoryDropDown.getItems().addAll(categories); 
 	}
 	
 	private void initLocationDropDown()  { 
 		ArrayList<String> locations = TagHandler.getLocationList();
-		ObservableList<String> locationOptions = FXCollections.observableArrayList(locations);
-	    locationDropDown.setItems(locationOptions);
+		locationDropDown.getItems().addAll(locations); 
 	}
 	
 	public void initialize() {  //startup code 
 		initCategoryDropDown();
 		initLocationDropDown();
 	}
-	 
+	
 	@FXML public void createAsset() { 
 		//Returns an alert if the asset, category, or location is not specified. 
 		if (assetTextField.getText().isEmpty() || categoryDropDown.getValue() == null || locationDropDown.getValue() == null) { 
@@ -62,9 +61,8 @@ public class AddAssetController {
 		String assetName = assetTextField.getText();
 		String categoryName = categoryDropDown.getValue();
 		String locationName = locationDropDown.getValue(); 
-		LocalDate purchaseDate = purchaseDatePicker.getValue();
-		String description = descriptionTextArea.getText(); 
-		LocalDate warrantyExpDate = warrantyDateDropDown.getValue(); 
+	
+		String description = descriptionTextArea.getText();
 		String purchasedValue = purchasedTextField.getText();
 		
 		Asset asset; 
@@ -72,12 +70,15 @@ public class AddAssetController {
 		if(assetName != null) {
 			asset = new Asset(assetName, categoryName, locationName);
 			
-			if (purchaseDate != null) 
-				asset.setPurchaseDate(java.sql.Date.valueOf(purchaseDate));
+			if (purchaseDatePicker.getValue() != null) 
+				asset.setPurchaseDate(Date.valueOf(purchaseDatePicker.getValue()));
+			
 			if (!description.isEmpty())
 				asset.setDescription(description);
-			if (warrantyExpDate !=null)
-				asset.setWarrantyExpDate(java.sql.Date.valueOf(warrantyExpDate));
+			
+			if (warrantyDatePicker.getValue() !=null)
+				asset.setWarrantyExpDate(Date.valueOf(warrantyDatePicker.getValue()));
+			
 			if (!purchasedValue.isEmpty()) { 
 				try { 
 					int purchasedInteger = Integer.parseInt(purchasedValue);
@@ -107,7 +108,7 @@ public class AddAssetController {
 		categoryDropDown.setValue(null);
 		locationDropDown.setValue(null);
 		purchaseDatePicker.setValue(null);
-		warrantyDateDropDown.setValue(null);
+		warrantyDatePicker.setValue(null);
 	}
 	
 }

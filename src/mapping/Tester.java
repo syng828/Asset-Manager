@@ -4,29 +4,18 @@ import mapping.AssetHandler;
 import java.util.ArrayList;
 
 public class Tester {
+	private SQLController sqlite = SQLController.getConnector();
 	
-	public static void main (String[] args) { 
+	public void runData() { 
 		DBinit db = new DBinit();
 		db.dbInit();
-		
-		ArrayList<String> categories = TagHandler.getCategoryList();
-				
-		for (String c : categories) { 
-			System.out.println(c);
-		}
-		//adding
-		/* Asset asset = new Asset("Asset", "CategoryOne", "LocationOne");
-		ArrayList <Asset> assets = AssetHandler.getAssetList();
-		for (Asset a : assets) { 
-			System.out.println(a.getInputString());
-		} */
-		//search
-		
-		//editing
-		
-		//deleting 
-		
+	
 		db.closeDB();
+	}
+	
+	public static void main (String[] args) { 
+		Tester tester = new Tester();
+		tester.runData();
 	}
 	
 }

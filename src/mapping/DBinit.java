@@ -20,8 +20,13 @@ public class DBinit {
             System.out.println(sqlite.createTables("Locations",
             		"LocationID INTEGER PRIMARY KEY, Name TEXT unique not null, Description TEXT"));  
             System.out.println(sqlite.createTables("Assets",
-            		"AssetID INTEGER PRIMARY KEY, Name TEXT unique not null, Category TEXT not null,"
+            		"AssetID INTEGER PcdRIMARY KEY, Name TEXT unique not null, Category TEXT not null,"
             		+ " Location TEXT not null, PurchaseDate DATE, Description TEXT, PurchasedValue INT, WarrantyExpDate DATE"));
+            System.out.println("Inserting categories and locations..");
+            sqlite.insertData("Categories", "Name", "'CategoryOne'");
+            sqlite.insertData("Categories", "Name", "'CategoryTwo'");
+            sqlite.insertData("Locations", "Name", "'LocationOne'");
+            sqlite.insertData("Locations", "Name, Description", "'LocationTwo', 'This is a description.'");
     	}
     	else {
     		System.out.println(sqlite.connectDB());
