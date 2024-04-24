@@ -21,6 +21,7 @@ public class TagHandler {
 	public String addTag(Tag tag) { 
 		
 		String result = (sqlite.insertData(tag.getTableName(), tag.getFields(), tag.getInputString()));
+		tagMap.get(tag.getTableName()).add(tag.getName());
 		
 		return result;
 	}
