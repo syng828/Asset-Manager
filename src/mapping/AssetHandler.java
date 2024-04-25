@@ -14,7 +14,7 @@ public class AssetHandler {
 	
 	public String addAsset(Asset asset) { 
 		
-		String result = (sqlite.insertData(asset.getTableName(), asset.getFields(), asset.getInputString()));
+		String result = (sqlite.insertData(Asset.getTableName(), Asset.getFields(), asset.getInputString()));
 		
 		return result;
 	}
@@ -24,7 +24,7 @@ public class AssetHandler {
 			ResultSet rs = sqlite.selectLike("Assets", "Name", sub);
 			ArrayList<Asset> a = new ArrayList<>();
 			while (rs.next()) { 
-				Asset asset = new Asset(rs.getString("Name"), rs.getString("Category"), rs.getString("Location"));
+				Asset asset = new Asset(rs.getString("Name"), rs.getInt("CategoryID"), rs.getInt("LocationID"));
 				a.add(asset);
 				
 				String purchaseDateString = rs.getString("PurchaseDate");

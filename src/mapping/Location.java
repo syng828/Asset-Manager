@@ -37,6 +37,10 @@ public class Location implements Tag {
 		return "'"+getName() + "', " + "'"+getDescription()+"'";
 	}
 	
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	
 	@Override
 	public boolean equals(Tag o) {
 		if(o.getName() == this.name) {

@@ -6,6 +6,7 @@ import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -36,24 +37,30 @@ public class EditAssetController {
 	private Asset asset = AssetHandler.getSelectedAsset(); 
 	private AssetHandler assetHandler = new AssetHandler(); 
 	
+	private HashMap<String, Integer> categoryMap;
+	private HashMap<String, Integer> locationMap;
+	
 	//Populates the dropdown with the location and categories in the db 
 	private void initCategoryDropDown()  { 
-		ArrayList<String> categories = TagHandler.getCategoryList();
-	    categoryDropDown.getItems().addAll(categories); 
+		categoryMap = TagHandler.getCategoryMap();
+	    categoryDropDown.getItems().addAll(categoryMap.keySet());  
 	}
 	
 	private void initLocationDropDown()  { 
-		ArrayList<String> locations = TagHandler.getLocationList();
-		locationDropDown.getItems().addAll(locations); 
+		locationMap = TagHandler.getLocationMap();
+		locationDropDown.getItems().addAll(locationMap.keySet());
 	}
 	
 	public void initialize() {  //startup code 
 		initCategoryDropDown();
 		initLocationDropDown();
 		
+		String categoryName = TagHandler.getCategoryName(asset.getCategoryID()); 
+		String locationName = TagHandler.getLocationName(asset.getLocationID()); 
+		
 		assetTextField.setText(asset.getName());
-		categoryDropDown.setValue(asset.getCategory());
-		locationDropDown.setValue(asset.getLocation());
+		categoryDropDown.setValue(categoryName);
+		locationDropDown.setValue(locationName);
 		
 		if (asset.getPurchaseDate() != null) {
 		    purchaseDatePicker.setValue(asset.getPurchaseDate().toLocalDate());
@@ -112,8 +119,11 @@ public class EditAssetController {
 		}
 			
 		try { 
-			assetHandler.updateAsset("Category", "'"+category+"'", asset.getName());
-			assetHandler.updateAsset("Location", "'"+location+"'", asset.getName());
+			int categoryID = categoryMap.get(category); 
+			int locationID = locationMap.get(location);
+			
+			assetHandler.updateAsset("CategoryID", "'"+categoryID+"'", asset.getName());
+			assetHandler.updateAsset("LocationID", "'"+locationID+"'", asset.getName());
 			assetHandler.updateAsset("PurchaseDate", "'"+purchaseString+"'", asset.getName());
 			assetHandler.updateAsset("Description", "'"+description+"'", asset.getName());
 			assetHandler.updateAsset("PurchasedValue", Integer.toString(purchasedInteger), asset.getName());

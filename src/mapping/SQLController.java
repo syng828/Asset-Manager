@@ -3,8 +3,6 @@ package mapping;
 import java.io.File;
 import java.sql.*;
 
-import org.sqlite.SQLiteErrorCode;
-
 public class SQLController {
 	
 	//Singleton pattern usage for SQLController to only have one instance handle SQLite connection per session
@@ -150,10 +148,10 @@ public class SQLController {
 		}
 	}
 	
-	protected ResultSet selectExact(String tableName, String matchField, String matchValue) { 
+	protected ResultSet select(String tableName, String fields, String matchField, String matchValue) { 
 		try {
 			Statement command = conn.createStatement();
-			String query = "SELECT * FROM " + tableName + " WHERE " + matchField + "=" +
+			String query = "SELECT " + fields  + " FROM " + tableName + " WHERE " + matchField + "=" +
 		               matchValue + ";";
 			System.out.println(query); 
 			ResultSet rs = command.executeQuery(query);
@@ -178,4 +176,4 @@ public class SQLController {
 			throw e;
 		}
 	}
-	}
+}

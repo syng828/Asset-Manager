@@ -1,6 +1,7 @@
 package application.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.sql.Date;
 import java.time.LocalDate;
 
@@ -29,19 +30,22 @@ public class AddAssetController {
 	@FXML DatePicker warrantyDatePicker;
 	@FXML TextField purchasedTextField;
 	@FXML Button createAssetBtn; 
+	
+	private HashMap<String, Integer> categoryMap;
+	private HashMap<String, Integer> locationMap;
 
 	//Populates the dropdown with the location and categories in the db 
 	private void initCategoryDropDown()  { 
-		ArrayList<String> categories = TagHandler.getCategoryList();
-	    categoryDropDown.getItems().addAll(categories); 
+		categoryMap = TagHandler.getCategoryMap();
+	    categoryDropDown.getItems().addAll(categoryMap.keySet()); 
 	}
 	
 	private void initLocationDropDown()  { 
-		ArrayList<String> locations = TagHandler.getLocationList();
-		locationDropDown.getItems().addAll(locations); 
+		locationMap = TagHandler.getLocationMap();
+		locationDropDown.getItems().addAll(locationMap.keySet());
 	}
-	
 	public void initialize() {  //startup code 
+		TagHandler.initMap();
 		initCategoryDropDown();
 		initLocationDropDown();
 	}
@@ -68,7 +72,10 @@ public class AddAssetController {
 		Asset asset; 
 		AssetHandler assetHandler = new AssetHandler();
 		if(assetName != null) {
-			asset = new Asset(assetName, categoryName, locationName);
+			int categoryID = categoryMap.get(categoryName); 
+			int locationID = locationMap.get(locationName); 
+			
+			asset = new Asset(assetName, categoryID, locationID);
 			
 			if (purchaseDatePicker.getValue() != null) 
 				asset.setPurchaseDate(Date.valueOf(purchaseDatePicker.getValue()));
