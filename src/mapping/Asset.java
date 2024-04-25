@@ -3,22 +3,22 @@ package mapping;
 import java.sql.Date;
 
 public class Asset {
-	final private String tableName = "Assets";
-	final private String fields = "Name, Category, Location, PurchaseDate,"
+	final static private String tableName = "Assets";
+	final static private String fields = "Name, CategoryID, LocationID, PurchaseDate,"
 			+ " Description, PurchasedValue, WarrantyExpDate";
 	
 	private String name;  
-	private String category; 
-	private String location;
+	private int categoryID;
+	private int locationID;
 	private Date purchaseDate;
 	private String description;
 	private int purchasedValue;
 	private Date warrantyExpDate;
 	
-	public Asset(String name, String category, String location) { 
+	public Asset(String name, int categoryID, int locationID) { 
 		this.name = name;
-		this.category = category;
-		this.location = location; 
+		this.categoryID = categoryID;
+		this.locationID = locationID;
 		
 		this.purchaseDate = null;
 		this.description = ""; 
@@ -30,12 +30,12 @@ public class Asset {
 		this.name = name;
 	}
 	
-	public void setCategory(String category) { 
-		this.category = category;
+	public void setCategoryID(int categoryID) { 
+		this.categoryID = categoryID;
 	}
 	
-	public void setLocation(String location) { 
-		this.location = location;
+	public void setLocationID(int locationID) { 
+		this.locationID = locationID;
 	}
 	
 	public void setPurchaseDate(Date purchaseDate) { 
@@ -55,12 +55,11 @@ public class Asset {
 		return name;
 	}
 	
-	public String getCategory() {
-		return category;
+	public int getCategoryID() {
+		return categoryID;
 	}
-	
-	public String getLocation() {
-		return location;
+	public int getLocationID() {
+		return locationID;
 	}
 	
 	public Date getPurchaseDate() { 
@@ -79,11 +78,11 @@ public class Asset {
 		return warrantyExpDate; 
 	}
 	
-	public String getTableName() {
+	public static String getTableName() {
 		return tableName;
 	}
 	
-	public String getFields() {
+	public static String getFields() {
 		return fields;
 	}
 	
@@ -102,7 +101,7 @@ public class Asset {
 			warrantyString = warrantyExpDate.toString();
 		System.out.println(warrantyString);
 		
-		return "'"+ name + "', " + "'"+category+"'" + ", " + "'"+location+"'" + 
+		return "'"+ name + "', " + "'"+categoryID+"'" + ", " + "'"+locationID+"'" + 
 				", " + "'"+purchaseString+"'" + ", " + "'"+description+"'" + ", " +  "'"+purchasedValue+"'"
 			+ ", " + "'"+warrantyString+"'";
 	}

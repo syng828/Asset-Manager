@@ -2,4 +2,4 @@ bin/
 .project
 .classpath
 .settings
-*Db.*
+*.db

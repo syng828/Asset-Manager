@@ -12,7 +12,8 @@ import java.util.HashMap;
 public class TagHandler {
 	
 	private static SQLController sqlite = SQLController.getConnector();
-	private static HashMap<String, ArrayList<String>> tagMap = new HashMap<>();
+	private static HashMap<String, Integer> catMap = new HashMap<>();
+	private static HashMap<String, Integer> locMap = new HashMap<>();
 	
 	public TagHandler() {
 	}
@@ -21,7 +22,6 @@ public class TagHandler {
 	public String addTag(Tag tag) { 
 		
 		String result = (sqlite.insertData(tag.getTableName(), tag.getFields(), tag.getInputString()));
-		tagMap.get(tag.getTableName()).add(tag.getName());
 		
 		return result;
 	}
@@ -30,35 +30,55 @@ public class TagHandler {
 	public static void initMap() { 
 		try { 
 			ResultSet rsCat = sqlite.selectAllData("Categories");
-			ArrayList<String> catArray = new ArrayList<>();
 			
 			while (rsCat.next()) { 
 				 String name = rsCat.getString("Name");
-				 catArray.add(name);
+				 int id = rsCat.getInt("CategoryID");
+				 
+				 catMap.put(name, id);
 				 
 			}
-			tagMap.put("Categories", catArray); 
-			
+		
 			ResultSet rsLoc = sqlite.selectAllData("Locations"); 
-			ArrayList<String> locArray = new ArrayList<>();
 			
 			while (rsLoc.next()) { 
 				
-				locArray.add(rsLoc.getString("Name"));
+				String name = rsLoc.getString("Name");
+				int id = rsLoc.getInt("LocationID");
+				locMap.put(name, id);
 			}
-			tagMap.put("Locations", locArray);
+			
 		}
 		catch (SQLException e){ 
 			e.printStackTrace();
 		}
 	}
-	public static ArrayList<String> getCategoryList() { 
-		return tagMap.get("Categories");
+	public static HashMap<String, Integer> getCategoryMap() { 
+		return catMap;
 	}
 	
-	public static ArrayList<String> getLocationList() { 
-		return tagMap.get("Locations");
+	public static HashMap<String, Integer> getLocationMap() { 
+		return locMap;
 	}
 	
+	public static String getCategoryName(int id) { 
+		try { 
+			ResultSet rs = sqlite.select("Categories", "Name", "CategoryID", String.valueOf(id));
+			return rs.getString("Name");
+		} catch (SQLException e) { 
+			e.printStackTrace(); 
+			return null;
+		}
+	}
+	
+	public static String getLocationName(int id) { 
+		try { 
+			ResultSet rs = sqlite.select("Locations", "Name", "LocationID", String.valueOf(id));
+			return rs.getString("Name");
+		} catch (SQLException e) { 
+			e.printStackTrace(); 
+			return null;
+		}
+	}
 	
 }
