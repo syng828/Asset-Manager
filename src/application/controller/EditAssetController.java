@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.sql.SQLException;
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 import javafx.fxml.FXML;
@@ -119,7 +117,7 @@ public class EditAssetController {
 		}
 			
 		try { 
-			int categoryID = categoryMap.get(category); 
+			int categoryID = categoryMap.get(category); //grabs back the id in the map
 			int locationID = locationMap.get(location);
 			
 			assetHandler.updateAsset("CategoryID", "'"+categoryID+"'", asset.getName());

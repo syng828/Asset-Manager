@@ -71,4 +71,24 @@ public class AssetHandler {
 		return result;
 	}
 	
+	public static String getCategoryName(int id) { 
+		try { 
+			ResultSet rs = sqlite.select("Categories", "Name", "CategoryID", String.valueOf(id));
+			return rs.getString("Name");
+		} catch (SQLException e) { 
+			e.printStackTrace(); 
+			return null;
+		}
+	}
+	
+	public static String getLocationName(int id) { 
+		try { 
+			ResultSet rs = sqlite.select("Locations", "Name", "LocationID", String.valueOf(id));
+			return rs.getString("Name");
+		} catch (SQLException e) { 
+			e.printStackTrace(); 
+			return null;
+		}
+	}
+	
 }

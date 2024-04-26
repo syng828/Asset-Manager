@@ -8,7 +8,7 @@
 
 <HBox fx:id="mainBox" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.MainController">
    <children>
-      <AnchorPane fx:id="addCategoryBtn" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: lightseagreen;">
+      <AnchorPane fx:id="addCategoryBtn" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #3299a8;">
          <children>
             <Button fx:id="addCategoryBtn" layoutX="36.0" layoutY="89.0" mnemonicParsing="false" onAction="#goToAddCategory" prefHeight="26.0" prefWidth="112.0" text="Add Category" />
             <Button fx:id="homeBtn" layoutX="14.0" layoutY="23.0" mnemonicParsing="false" onAction="#goToHome" text="Home" />

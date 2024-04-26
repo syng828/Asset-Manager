@@ -2,7 +2,6 @@ package mapping;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 //import java.sql.ResultSet; Imports planned for later version usage
@@ -61,6 +60,7 @@ public class TagHandler {
 		return locMap;
 	}
 	
+	//gets the name based on matching id in sql query
 	public static String getCategoryName(int id) { 
 		try { 
 			ResultSet rs = sqlite.select("Categories", "Name", "CategoryID", String.valueOf(id));

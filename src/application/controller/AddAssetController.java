@@ -1,12 +1,8 @@
 package application.controller;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.sql.Date;
-import java.time.LocalDate;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -16,7 +12,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.TextArea;
 import mapping.Asset;
 import mapping.AssetHandler;
-import mapping.Category;
 import mapping.TagHandler;
 
 //Controls the AddNewAsset.fxml

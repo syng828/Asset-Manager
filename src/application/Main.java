@@ -9,9 +9,6 @@ import mapping.DBinit;
 
 public class Main extends Application {
 	
-	/*@TODO: Fix the database and make sure it works, then call it in the AddCategoryController
-	and add AddLocationController */ 
-	
 	@Override
 	public void start(Stage primaryStage) {
 		try { 
