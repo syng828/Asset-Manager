@@ -116,7 +116,7 @@ public class SQLController {
 		return "Successfully added entry into " + tableName;
 	}
 	
-	//Executes 'SELECT' SQL query based on string parameters as fragments, returns result of select query
+	//Executes 'SELECT' SQL query with all the data
 	protected ResultSet selectAllData(String tableName)  { 
 		try { 
 			System.out.println("attempting to select data"); 
@@ -132,7 +132,7 @@ public class SQLController {
 			return null;
 		}
 	}
-	
+	//Executes "SELECT" SQL Query based on matching substring 
 	protected ResultSet selectLike(String tableName, String matchField, String sub) {
 		try {
 			System.out.println("Fetching data matching with " + sub);
@@ -148,6 +148,7 @@ public class SQLController {
 		}
 	}
 	
+	//Executes "SELECT" query, returns result based on given fields
 	protected ResultSet select(String tableName, String fields, String matchField, String matchValue) { 
 		try {
 			Statement command = conn.createStatement();
@@ -163,6 +164,7 @@ public class SQLController {
 		}
 	}
 	
+	//Executes "UPDATE" query based on giving parameters
 	protected void editData(String tableName, String field, String value, String matchField, String matchValue) throws SQLException{
 		try { 
 			Statement command = conn.createStatement(); 

@@ -10,7 +10,7 @@
    <children>
       <Label layoutX="85.0" layoutY="32.0" text="Asset Tracker">
          <font>
-            <Font size="44.0" />
+            <Font name="System Bold Italic" size="44.0" />
          </font>
       </Label>
    </children>

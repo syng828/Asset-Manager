@@ -7,18 +7,20 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.AddAssetController">
    <children>
-      <Label layoutX="34.0" layoutY="11.0" text="Add New Asset">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#5185ab" height="46.0" stroke="TRANSPARENT" strokeType="INSIDE" width="400.0" />
+      <Label layoutX="34.0" layoutY="11.0" text="Add New Asset" textFill="WHITE">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Label layoutX="34.0" layoutY="51.0" text="Asset name" />
-      <Label layoutX="115.0" layoutY="51.0" text="*Required" textFill="RED" />
-      <TextField fx:id="assetTextField" layoutX="188.0" layoutY="46.0" prefHeight="30.0" prefWidth="186.0" />
+      <Label layoutX="34.0" layoutY="61.0" text="Asset name" />
+      <Label layoutX="115.0" layoutY="61.0" text="*Required" textFill="RED" />
+      <TextField fx:id="assetTextField" layoutX="189.0" layoutY="56.0" prefHeight="30.0" prefWidth="186.0" />
       <DatePicker fx:id="purchaseDatePicker" layoutX="189.0" layoutY="176.0" prefHeight="30.0" prefWidth="186.0" />
       <ChoiceBox fx:id="categoryDropDown" layoutX="188.0" layoutY="94.0" prefHeight="30.0" prefWidth="186.0" />
       <ChoiceBox fx:id="locationDropDown" layoutX="188.0" layoutY="137.0" prefHeight="30.0" prefWidth="186.0" />
