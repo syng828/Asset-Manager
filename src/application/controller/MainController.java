@@ -46,6 +46,10 @@ public class MainController {
 		loadFXML("view/ListAsset.fxml");
 	}
 	
+	@FXML public void goToBrowseLocation() {
+		loadFXML("view/BrowseLocation.fxml");
+	}
+	
 	
 	
 	//Loads the display on the right.

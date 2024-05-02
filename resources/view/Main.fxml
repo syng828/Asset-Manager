@@ -15,6 +15,7 @@
             <Button fx:id="addLocationBtn" layoutX="36.0" layoutY="145.0" mnemonicParsing="false" onAction="#goToAddLocation" prefHeight="30.0" prefWidth="112.0" text="Add Location" />
             <Button fx:id="addAssetBtn" layoutX="36.0" layoutY="200.0" mnemonicParsing="false" onAction="#goToAddAsset" prefHeight="30.0" prefWidth="112.0" text="Add Asset" />
             <Button fx:id="editAssetButton1" layoutX="36.0" layoutY="253.0" mnemonicParsing="false" onAction="#goToEditAsset" prefHeight="26.0" prefWidth="112.0" text="Search Asset" />
+            <Button fx:id="browseLocationButton" layoutX="36.0" layoutY="305.0" mnemonicParsing="false" onAction="#goToBrowseLocation" prefHeight="26.0" prefWidth="112.0" text="Browse Locations" />
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="400.0" prefWidth="400.0" />
