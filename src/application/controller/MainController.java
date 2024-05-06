@@ -46,6 +46,9 @@ public class MainController {
 		loadFXML("view/ListAsset.fxml");
 	}
 	
+	@FXML public void goToExpiredAssets() { 
+		loadFXML("view/ExpiredWarrantyAsset.fxml"); 
+	}
 	
 	
 	//Loads the display on the right.
