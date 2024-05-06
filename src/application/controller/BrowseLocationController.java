@@ -48,7 +48,9 @@ public class BrowseLocationController {
 		    alert.showAndWait();
 		} else { 
 			String loc = lDrop.getSelectionModel().getSelectedItem();
-			ArrayList<Asset> a = AssetHandler.locSearch(loc);
+			int id = lMap.get(loc);
+			String ids = String.valueOf(id);
+			ArrayList<Asset> a = AssetHandler.locSearch(ids);
 			
 			System.out.println("A empty? " + a.isEmpty());
 			for(Asset ast: a ) {

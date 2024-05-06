@@ -46,9 +46,9 @@ public class AssetHandler {
 		}
 	}
 	
-	public static ArrayList<Asset> locSearch(String loc) {
+	public static ArrayList<Asset> locSearch(String id) {
 		try {
-			ResultSet rs = sqlite.selectLike("Assets", "LocationID", loc);
+			ResultSet rs = sqlite.select("Assets","*", "LocationID", id);
 			ArrayList<Asset> a = new ArrayList<>();
 			while (rs.next()) {  
 				Asset asset = new Asset(rs.getString("Name"), rs.getInt("CategoryID"), rs.getInt("LocationID"));
