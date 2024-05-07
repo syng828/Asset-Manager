@@ -82,13 +82,12 @@ public class SQLController {
 			//String query = "SELECT * FROM Assets WHERE name LIKE sub ";
 			String query = "DELETE FROM Assets WHERE name='" + sub + "';";
 			System.out.println(query);
-			command.executeQuery(query);
+			command.executeUpdate(query);
 			command.close();
 		}
 		catch(SQLException e) { 
 			return "SQL connection error " + e;
 		}
-		
 		return "Asset successfully deleted";
 	}
 	
