@@ -20,7 +20,7 @@ public class DBinit {
             System.out.println(sqlite.createTables("Locations",
             		"LocationID INTEGER PRIMARY KEY, Name TEXT unique not null, Description TEXT"));  
             System.out.println(sqlite.createTables("Assets",
-            		"AssetID INTEGER PcdRIMARY KEY, Name TEXT unique not null, CategoryID INT not null,"
+            		"AssetID INTEGER PRIMARY KEY, Name TEXT unique not null, CategoryID INT not null,"
             		+ " LocationID INT not null, PurchaseDate DATE, Description TEXT, PurchasedValue INT, WarrantyExpDate DATE"));
             System.out.println("Inserting categories and locations..");
             //initializes two categories and locations
@@ -34,6 +34,8 @@ public class DBinit {
     	}
     	
     	TagHandler.initMap();
+    	AssetHandler.initCache();
+    	AssetHandler.importAssets();
       
     }
     

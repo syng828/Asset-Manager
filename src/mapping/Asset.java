@@ -113,4 +113,19 @@ public class Asset {
 				", " + "'"+purchaseString+"'" + ", " + "'"+description+"'" + ", " +  "'"+purchasedValue+"'"
 			+ ", " + "'"+warrantyString+"'";
 	}
+	
+	@Override 
+	public boolean equals(Object o) {
+		
+		if (!(o instanceof Asset)) {
+	        return false;
+	    }
+		Asset asset = (Asset) o;
+		if(name.equals(asset.getName())) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
 }
