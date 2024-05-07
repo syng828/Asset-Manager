@@ -26,7 +26,7 @@ public class ExpiredWarrantyAssetController {
 	ArrayList<Asset> a;
 	public void initialize() { 
 		AssetHandler.cancelSelectedAsset();
-		a = AssetHandler.getExpiredAssets();
+		a = AssetHandler.getExpiredAssetList();
 		nameCol.setCellValueFactory(new PropertyValueFactory<Asset, String>("name"));
 		
 		warrantyCol.setCellValueFactory(cellData -> {

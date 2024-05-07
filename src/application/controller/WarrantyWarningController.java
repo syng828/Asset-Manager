@@ -22,7 +22,7 @@ public class WarrantyWarningController {
 	public void goToExpired() {
 		
 		//Enter path to Expired Assets Page TODO
-		loadFXML("view/Home.fxml");
+		loadFXML("view/ExpiredWarrantyAsset.fxml");
 	}
 	
 	private void loadFXML(String fxmlPath) { 

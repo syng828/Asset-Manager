@@ -117,7 +117,7 @@ public class AssetHandler {
 		}
 	}
 	
-	public static ArrayList<Asset> getExpiredAssets() { 
+	public static ArrayList<Asset> getExpiredAssetList() { 
 		try { 
 			
 			ResultSet rs = sqlite.selectComparator("Assets", "WarrantyExpDate", "<=", "'" + LocalDate.now().toString() + "'");
