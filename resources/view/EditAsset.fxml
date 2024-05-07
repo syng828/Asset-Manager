@@ -13,7 +13,7 @@
 <AnchorPane fx:id="editPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.EditAssetController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#5185ab" height="55.0" layoutY="-3.0" stroke="TRANSPARENT" strokeType="INSIDE" width="400.0" />
-      <Label layoutX="31.0" layoutY="7.0" text="Asset Details" textFill="WHITE">
+      <Label layoutX="31.0" layoutY="7.0" text="Edit Asset" textFill="WHITE">
          <font>
             <Font size="24.0" />
          </font>

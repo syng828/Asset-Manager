@@ -2,6 +2,7 @@ package mapping;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.sql.Date;
@@ -94,8 +95,7 @@ public class AssetHandler {
 			ArrayList<Asset> a = new ArrayList<>();
 			while (rs.next()) { 
 				Asset asset = new Asset(rs.getString("Name"), rs.getInt("CategoryID"), rs.getInt("LocationID"));
-				a.add(asset);
-				
+			
 				String purchaseDateString = rs.getString("PurchaseDate");
 				if (purchaseDateString != null && !purchaseDateString.equals("NULL")) 
 					asset.setPurchaseDate(Date.valueOf(purchaseDateString));
@@ -105,11 +105,36 @@ public class AssetHandler {
 				
 				asset.setDescription(rs.getString("Description"));
 				asset.setPurchasedValue(rs.getInt("PurchasedValue"));
+				a.add(asset);
+				
 			}
 			
 			return a;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	public static ArrayList<Asset> getExpiredAssets() { 
+		try { 
+			
+			ResultSet rs = sqlite.selectComparator("Assets", "WarrantyExpDate", "<=", "'" + LocalDate.now().toString() + "'");
+			ArrayList<Asset> a = new ArrayList<>(); 
+			while (rs.next()) { 
+				Asset asset = new Asset(rs.getString("Name"), rs.getInt("CategoryID"), rs.getInt("LocationID"));
+				asset.setWarrantyExpDate(Date.valueOf(rs.getString("WarrantyExpDate")));
+			
+				String purchaseDateString = rs.getString("PurchaseDate");
+				if (purchaseDateString != null && !purchaseDateString.equals("NULL")) 
+					asset.setPurchaseDate(Date.valueOf(purchaseDateString));
+				asset.setDescription(rs.getString("Description"));
+				asset.setPurchasedValue(rs.getInt("PurchasedValue"));
+				a.add(asset);
+			}
+			return a; 
+		} catch (SQLException e) { 
 			e.printStackTrace();
 			return null;
 		}

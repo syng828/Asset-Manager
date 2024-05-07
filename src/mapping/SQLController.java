@@ -163,6 +163,22 @@ public class SQLController {
 		}
 	}
 	
+	//Executes "SELECT" query with < > operators, returns result based on given fields
+		protected ResultSet selectComparator(String tableName,  String matchField, String comparator, String matchValue) { 
+			try {
+				Statement command = conn.createStatement();
+				String query = "SELECT * FROM " + tableName + " WHERE " + matchField + comparator +
+			               matchValue + ";";
+				System.out.println(query); 
+				ResultSet rs = command.executeQuery(query);
+				return rs;
+			}
+			catch(SQLException e) { 
+				System.out.println(e);
+				return null;
+			}
+		}
+	
 	//Executes "UPDATE" query based on giving parameters
 	protected void editData(String tableName, String field, String value, String matchField, String matchValue) throws SQLException{
 		try { 
