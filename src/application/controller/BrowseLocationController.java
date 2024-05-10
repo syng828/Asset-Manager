@@ -56,7 +56,7 @@ public class BrowseLocationController {
 		} else { 
 			Asset asset = locTable.getSelectionModel().getSelectedItem();
 			AssetHandler.selectAsset(asset);  //selects current asset to be used when editing
-			loadFXML("view/ExamineAsset.fxml");
+			loadFXML("view/AssetInfo.fxml");
 		}
 	}
 	

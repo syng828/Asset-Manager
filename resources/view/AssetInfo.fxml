@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="infoPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.AssetInfoController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#5185ab" height="55.0" layoutY="-3.0" stroke="TRANSPARENT" strokeType="INSIDE" width="400.0" />
+      <Label layoutX="31.0" layoutY="7.0" text="Asset Details" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="35.0" layoutY="63.0" text="Asset name" />
+      <Label layoutX="34.0" layoutY="104.0" text="Category" />
+      <Label layoutX="36.0" layoutY="149.0" text="Location" />
+      <Label layoutX="35.0" layoutY="185.0" text="Purchased Date" />
+      <Label layoutX="35.0" layoutY="227.0" text="Description" />
+      <Label layoutX="32.0" layoutY="287.0" text="Purchased Value" />
+      <Label layoutX="29.0" layoutY="329.0" text="Warranty Expiration Date" />
+      <Text fx:id="assetText" layoutX="200.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="N/A" wrappingWidth="167.326171875" />
+      <Text fx:id="categoryText" layoutX="200.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="N/A" wrappingWidth="155.00000417232513" />
+      <Text fx:id="locationText" layoutX="200.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" text="N/A" wrappingWidth="155.00000715255737" />
+      <Text fx:id="purchaseText" layoutX="200.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="N/A" wrappingWidth="155.00000715255737" />
+      <Text fx:id="descriptionText" layoutX="200.0" layoutY="242.0" strokeType="OUTSIDE" strokeWidth="0.0" text="N/A" wrappingWidth="155.00000715255737" />
+      <Text fx:id="valueText" layoutX="200.0" layoutY="292.0" strokeType="OUTSIDE" strokeWidth="0.0" text="N/A" wrappingWidth="155.00000715255737" />
+      <Text fx:id="warrantyText" layoutX="200.0" layoutY="344.0" strokeType="OUTSIDE" strokeWidth="0.0" text="N/A" wrappingWidth="155.00000715255737" />
+   </children>
+</AnchorPane>

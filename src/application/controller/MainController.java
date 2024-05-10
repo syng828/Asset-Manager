@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox; 
+import mapping.AssetHandler;
 
 //Controls Main.fxml for switching between pages
 public class MainController { 
@@ -19,7 +20,13 @@ public class MainController {
 	// Load Home.fxml when the controller is initialized
 	 @FXML
     public void initialize() {
-        loadFXML("view/Home.fxml");
+		if(AssetHandler.hasExpiredAssets()) {
+			loadFXML("view/WarrantyWarning.fxml");
+		}
+		else {
+			loadFXML("view/Home.fxml");
+		}
+        
     }
 	 
 	//Replaces display with the Home.fxml page when button is clicked
@@ -50,6 +57,9 @@ public class MainController {
 		loadFXML("view/BrowseLocation.fxml");
 	}
 	
+	@FXML public void goToExpiredAssets() { 
+		loadFXML("view/ExpiredWarrantyAsset.fxml"); 
+	}
 	
 	
 	//Loads the display on the right.

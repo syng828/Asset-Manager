@@ -1,21 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
 
 <!-- Main View. Acts as a navigation bar to switch between pages. -->
 
 <HBox fx:id="mainBox" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.MainController">
    <children>
-      <AnchorPane fx:id="addCategoryBtn" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #3299a8;">
+      <AnchorPane fx:id="mainPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #3299a8;">
          <children>
-            <Button fx:id="addCategoryBtn" layoutX="36.0" layoutY="89.0" mnemonicParsing="false" onAction="#goToAddCategory" prefHeight="26.0" prefWidth="112.0" text="Add Category" />
+            <Button fx:id="addCategoryBtn" layoutX="37.0" layoutY="95.0" mnemonicParsing="false" onAction="#goToAddCategory" prefHeight="26.0" prefWidth="112.0" text="Add Category" />
             <Button fx:id="homeBtn" layoutX="14.0" layoutY="23.0" mnemonicParsing="false" onAction="#goToHome" text="Home" />
-            <Button fx:id="addLocationBtn" layoutX="36.0" layoutY="145.0" mnemonicParsing="false" onAction="#goToAddLocation" prefHeight="30.0" prefWidth="112.0" text="Add Location" />
-            <Button fx:id="addAssetBtn" layoutX="36.0" layoutY="200.0" mnemonicParsing="false" onAction="#goToAddAsset" prefHeight="30.0" prefWidth="112.0" text="Add Asset" />
-            <Button fx:id="editAssetButton1" layoutX="36.0" layoutY="253.0" mnemonicParsing="false" onAction="#goToEditAsset" prefHeight="26.0" prefWidth="112.0" text="Search Asset" />
-            <Button fx:id="browseLocationButton" layoutX="36.0" layoutY="305.0" mnemonicParsing="false" onAction="#goToBrowseLocation" prefHeight="26.0" prefWidth="112.0" text="Browse Locations" />
+            <Button fx:id="addLocationBtn" layoutX="36.0" layoutY="161.0" mnemonicParsing="false" onAction="#goToAddLocation" prefHeight="30.0" prefWidth="112.0" text="Add Location" />
+            <Button fx:id="browseLocationButton" layoutX="36.0" layoutY="200.0" mnemonicParsing="false" onAction="#goToBrowseLocation" prefHeight="26.0" prefWidth="112.0" text="Browse Locations" />
+            <Button fx:id="addAssetBtn" layoutX="37.0" layoutY="260.0" mnemonicParsing="false" onAction="#goToAddAsset" prefHeight="30.0" prefWidth="112.0" text="Add Asset" />
+            <Button fx:id="editAssetButton1" layoutX="37.0" layoutY="303.0" mnemonicParsing="false" onAction="#goToEditAsset" prefHeight="26.0" prefWidth="112.0" text="Search Asset" />
+            <Button fx:id="expiredAssetsBtn" layoutX="36.0" layoutY="347.0" mnemonicParsing="false" onAction="#goToExpiredAssets" prefHeight="30.0" prefWidth="112.0" text="Expired Assets" />
+            <Label layoutX="25.0" layoutY="59.0" text="Category" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="27.0" layoutY="131.0" text="Location" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="27.0" layoutY="230.0" text="Asset" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="400.0" prefWidth="400.0" />
