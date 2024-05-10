@@ -59,7 +59,7 @@ public class ListAssetController {
 		table.getColumns().add(nameCol);
 		table.getColumns().add(categoryCol);
 		table.getColumns().add(locationCol);
-		
+		     
 		for(Asset ast: a ) {
 			table.getItems().add(ast);
 		}

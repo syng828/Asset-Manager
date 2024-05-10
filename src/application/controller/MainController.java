@@ -53,6 +53,10 @@ public class MainController {
 		loadFXML("view/ListAsset.fxml");
 	}
 	
+	@FXML public void goToBrowseLocation() {
+		loadFXML("view/BrowseLocation.fxml");
+	}
+	
 	@FXML public void goToExpiredAssets() { 
 		loadFXML("view/ExpiredWarrantyAsset.fxml"); 
 	}

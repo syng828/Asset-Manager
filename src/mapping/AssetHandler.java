@@ -93,7 +93,34 @@ public class AssetHandler {
 		try {
 			ResultSet rs = sqlite.selectLike("Assets", "Name", sub);
 			ArrayList<Asset> a = new ArrayList<>();
-			while (rs.next()) { 
+			while (rs.next()) {  
+				Asset asset = new Asset(rs.getString("Name"), rs.getInt("CategoryID"), rs.getInt("LocationID"));
+				a.add(asset);
+				
+				String purchaseDateString = rs.getString("PurchaseDate");
+				if (purchaseDateString != null && !purchaseDateString.equals("NULL")) 
+					asset.setPurchaseDate(Date.valueOf(purchaseDateString));
+				String warrantyDateString = rs.getString("WarrantyExpDate"); 
+				if (warrantyDateString != null && !warrantyDateString.equals("NULL")) 
+					asset.setWarrantyExpDate(Date.valueOf(warrantyDateString));
+				
+				asset.setDescription(rs.getString("Description"));
+				asset.setPurchasedValue(rs.getInt("PurchasedValue"));
+			}
+			
+			return a;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	public static ArrayList<Asset> locSearch(String id) {
+		try {
+			ResultSet rs = sqlite.select("Assets","*", "LocationID", id);
+			ArrayList<Asset> a = new ArrayList<>();
+			while (rs.next()) {  
 				Asset asset = new Asset(rs.getString("Name"), rs.getInt("CategoryID"), rs.getInt("LocationID"));
 			
 				String purchaseDateString = rs.getString("PurchaseDate");
