@@ -24,37 +24,37 @@ import mapping.Asset;
 import mapping.AssetHandler;
 import mapping.TagHandler;
 
-public class BrowseLocationController {
+public class BrowseCategoryController {
 	
 	@FXML AnchorPane pane;
-	@FXML ChoiceBox<String> lDrop;
-	private HashMap<String, Integer> lMap;
-	@FXML TableView<Asset> locTable;
+	@FXML ChoiceBox<String> cDrop;
+	private HashMap<String, Integer> cMap;
+	@FXML TableView<Asset> catTable;
 	@FXML TableColumn<Asset, String> aCol;
-	@FXML TableColumn <Asset, String> lCol;
+	@FXML TableColumn <Asset, String> cCol;
 	@FXML TableColumn <Asset, String> wCol;
 	@FXML Button searchBtn;
 	@FXML Button examineBtn;
 	
-	private void initLocationDropDown()  { 
-		lMap = TagHandler.getLocationMap();
-		System.out.print("Key Set is false? : " + lMap.keySet().isEmpty());
-		lDrop.getItems().addAll(lMap.keySet());
+	private void initCategoryDropDown()  { 
+		cMap = TagHandler.getCategoryMap();
+		System.out.print("Key Set is false? : " + cMap.keySet().isEmpty());
+		cDrop.getItems().addAll(cMap.keySet());
 	}
 	
 	public void initialize() { 
 		TagHandler.initMap();
-		initLocationDropDown();
+		initCategoryDropDown();
 	}
 	
 	@FXML public void examineAsset() { 
-		if (locTable.getSelectionModel().getSelectedItem() == null) { 
+		if (catTable.getSelectionModel().getSelectedItem() == null) { 
 			Alert alert = new Alert(Alert.AlertType.ERROR);
 		    alert.setTitle("No Asset Selected");
 		    alert.setContentText("Please select an asset."); 
 		    alert.showAndWait();
 		} else { 
-			Asset asset = locTable.getSelectionModel().getSelectedItem();
+			Asset asset = catTable.getSelectionModel().getSelectedItem();
 			AssetHandler.selectAsset(asset);  //selects current asset to be used when editing
 			loadFXML("view/AssetInfo.fxml");
 		}
@@ -77,17 +77,17 @@ public class BrowseLocationController {
 	}	
 	
 	
-	public void displayLocTable() {
-		if (lDrop.getSelectionModel().getSelectedItem() == null) { 
+	public void displayCatTable() {
+		if (cDrop.getSelectionModel().getSelectedItem() == null) { 
 			Alert alert = new Alert(Alert.AlertType.ERROR);
-		    alert.setTitle("No Location Selected");
-		    alert.setContentText("Please select a location."); 
+		    alert.setTitle("No Category Selected");
+		    alert.setContentText("Please select a category."); 
 		    alert.showAndWait();
 		} else { 
-			String loc = lDrop.getSelectionModel().getSelectedItem();
-			int id = lMap.get(loc);
+			String loc = cDrop.getSelectionModel().getSelectedItem();
+			int id = cMap.get(loc);
 			String ids = String.valueOf(id);
-			ArrayList<Asset> a = AssetHandler.locSearch(ids);
+			ArrayList<Asset> a = AssetHandler.catSearch(ids);
 			
 			System.out.println("A empty? " + a.isEmpty());
 			for(Asset ast: a ) {
@@ -96,21 +96,21 @@ public class BrowseLocationController {
 			}
 			//sets values with the specified attributes
 			aCol.setCellValueFactory(new PropertyValueFactory<Asset, String>("name")); //gets property from assets
-			lCol.setCellValueFactory(cellData -> {
-			    String locationName = cellData.getValue().getLocationName();
-			    return new SimpleStringProperty(locationName);}); 
+			cCol.setCellValueFactory(cellData -> {
+			    String categoryName = cellData.getValue().getCategoryName(); //creates a special string property from category name for each asset
+			    return new SimpleStringProperty(categoryName);});  
 			wCol.setCellValueFactory(cellData -> {
 			    Date expirationDate = cellData.getValue().getWarrantyExpDate(); //creates a special string property from category name for each asset
 			    return new SimpleStringProperty(expirationDate.toString());});  
-			
-			locTable.getColumns().clear();
-			locTable.getItems().clear();
-			locTable.getColumns().add(aCol);
-			locTable.getColumns().add(lCol);
-			locTable.getColumns().add(wCol);
+	
+			catTable.getColumns().clear();
+			catTable.getItems().clear();
+			catTable.getColumns().add(aCol);
+			catTable.getColumns().add(cCol);
+			catTable.getColumns().add(wCol);
 			     
 			for(Asset ast: a ) {
-				locTable.getItems().add(ast);
+				catTable.getItems().add(ast);
 			}
 		}
 	}

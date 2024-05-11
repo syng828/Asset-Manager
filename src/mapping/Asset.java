@@ -67,7 +67,7 @@ public class Asset {
 	}
 	
 	public String getLocationName() { 
-		return AssetHandler.getLocationName(categoryID);
+		return AssetHandler.getLocationName(locationID);
 	}
 	
 	public Date getPurchaseDate() { 
