@@ -18,10 +18,12 @@
       <ChoiceBox fx:id="lDrop" layoutX="121.0" layoutY="123.0" prefWidth="150.0" />
       <TableView fx:id="locTable" layoutX="17.0" layoutY="169.0" prefHeight="201.0" prefWidth="305.0">
         <columns>
-          <TableColumn fx:id="aCol" prefWidth="304.0" text="Asset Name" />
+          <TableColumn fx:id="aCol" prefWidth="99.0" text="Asset Name" />
+            <TableColumn fx:id="lCol" prefWidth="98.0" text="Location" />
+            <TableColumn fx:id="wCol" prefWidth="107.0" text="Warranty Date" />
         </columns>
       </TableView>
       <Button fx:id="searchBtn" layoutX="293.0" layoutY="123.0" mnemonicParsing="false" onAction="#displayLocTable" text="Search" />
-      <Button fx:id="examineBtn" layoutX="331.0" layoutY="169.0" mnemonicParsing="false" onAction="#examineAsset" text="Examine" />
+      <Button fx:id="examineBtn" layoutX="324.0" layoutY="169.0" mnemonicParsing="false" onAction="#examineAsset" text="Examine" />
    </children>
 </AnchorPane>

@@ -31,8 +31,8 @@ public class BrowseLocationController {
 	private HashMap<String, Integer> lMap;
 	@FXML TableView<Asset> locTable;
 	@FXML TableColumn<Asset, String> aCol;
-	//@FXML TableColumn <Asset, String> cCol;
-	//@FXML TableColumn <Asset, String> lCol;
+	@FXML TableColumn <Asset, String> lCol;
+	@FXML TableColumn <Asset, String> wCol;
 	@FXML Button searchBtn;
 	@FXML Button examineBtn;
 	
@@ -96,19 +96,18 @@ public class BrowseLocationController {
 			}
 			//sets values with the specified attributes
 			aCol.setCellValueFactory(new PropertyValueFactory<Asset, String>("name")); //gets property from assets
-			/*
-			cCol.setCellValueFactory(cellData -> {
-			    String categoryName = cellData.getValue().getCategoryName(); //creates a special string property from category name for each asset
-			    return new SimpleStringProperty(categoryName);});  
 			lCol.setCellValueFactory(cellData -> {
 			    String locationName = cellData.getValue().getLocationName();
 			    return new SimpleStringProperty(locationName);}); 
-			*/
+			wCol.setCellValueFactory(cellData -> {
+			    Date expirationDate = cellData.getValue().getWarrantyExpDate(); //creates a special string property from category name for each asset
+			    return new SimpleStringProperty(expirationDate.toString());});  
+			
 			locTable.getColumns().clear();
 			locTable.getItems().clear();
 			locTable.getColumns().add(aCol);
-			//locTable.getColumns().add(cCol);
-			//locTable.getColumns().add(lCol);
+			locTable.getColumns().add(lCol);
+			locTable.getColumns().add(wCol);
 			     
 			for(Asset ast: a ) {
 				locTable.getItems().add(ast);

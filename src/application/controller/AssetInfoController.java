@@ -28,9 +28,9 @@ public class AssetInfoController {
 		if (asset.getPurchaseDate() != null) {
 			purchaseText.setText(asset.getPurchaseDate().toLocalDate().toString());
 		}
-		if (!asset.getDescription().equals("")) 
+		if (asset.getDescription() != null) {
 			descriptionText.setText(asset.getDescription());
-		
+		} 
 		if (asset.getWarrantyExpDate() != null) {
 			warrantyText.setText(asset.getWarrantyExpDate().toLocalDate().toString());
 		}
