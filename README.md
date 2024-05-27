@@ -1,4 +1,4 @@
-## Asset Tracker ##
+## Asset Manager ##
 Description:
 A desktop application that tracks the assets of a user and stores it in a database.
 It uses a MVC pattern and makes use of Java's OOP concepts. 
