@@ -12,3 +12,6 @@ Database: SQLite
 1. Download JavaFX, JavaFX SDK, and Scene Builder.
 2. Configure the build path in Eclipse. 
 3. Run Main.java
+
+# Demo #
+https://youtu.be/xCZWzwNVPHA
