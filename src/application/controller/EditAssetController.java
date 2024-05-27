@@ -63,9 +63,9 @@ public class EditAssetController {
 		if (asset.getPurchaseDate() != null) {
 		    purchaseDatePicker.setValue(asset.getPurchaseDate().toLocalDate());
 		}
-		if (!asset.getDescription().equals("")) 
+		if (asset.getDescription() != null) {
 			descriptionTextArea.setText(asset.getDescription());
-		
+		}
 		if (asset.getWarrantyExpDate() != null) {
 			warrantyDatePicker.setValue(asset.getWarrantyExpDate().toLocalDate());
 		}
